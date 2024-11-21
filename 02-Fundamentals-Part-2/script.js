@@ -144,29 +144,154 @@
 
 // * Challenge #1
 
-const calcAverage = (a, b, c) => (a + b + c) / 3;
+// const calcAverage = (a, b, c) => (a + b + c) / 3;
 
-// Test 1
-let scoreDolphins = calcAverage(44, 23, 71);
-let scoreKoalas = calcAverage(65, 54, 49);
+// // Test 1
+// let scoreDolphins = calcAverage(44, 23, 71);
+// let scoreKoalas = calcAverage(65, 54, 49);
 
-console.log(scoreDolphins, scoreKoalas);
+// console.log(scoreDolphins, scoreKoalas);
 
-const checkWinner = function (avgDolphins, avgKoalas) {
-    if (avgDolphins >= avgKoalas * 2) {
-        console.log(`Dolphins win the trophy🏆 (${avgDolphins} vs. ${avgKoalas})`);
-    } else if (avgKoalas >= avgDolphins * 2) {
-        console.log(`Koalas win the trophy 🏆 (${avgKoalas} vs. ${avgDolphins})`);
-    } else {
-        console.log(`No team wins...`);
-    }
+// const checkWinner = function (avgDolphins, avgKoalas) {
+//     if (avgDolphins >= avgKoalas * 2) {
+//         console.log(`Dolphins win the trophy🏆 (${avgDolphins} vs. ${avgKoalas})`);
+//     } else if (avgKoalas >= avgDolphins * 2) {
+//         console.log(`Koalas win the trophy 🏆 (${avgKoalas} vs. ${avgDolphins})`);
+//     } else {
+//         console.log(`No team wins...`);
+//     }
+// }
+
+// checkWinner(scoreDolphins, scoreKoalas);
+
+// // Test 2
+// scoreDolphins = calcAverage(85, 54, 41);
+// scoreKoalas = calcAverage(23, 34, 27);
+// console.log(scoreDolphins, scoreKoalas);
+
+// checkWinner(scoreDolphins, scoreKoalas);
+
+
+// * 7. Introduction to Arrays
+
+// const friend1 = `Michael`;
+// const friend2 = `Steven`;
+// const friend3 = `Peter`;
+
+// const friends = [`Michael`, `Steven`, `Peter`];
+// console.log(friends);
+
+// // const years = new Array(1991, 1984, 2008, 2020);
+// // console.log(years);
+
+// console.log(friends[2]);
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
+
+// friends[2] = `Jay`;
+// console.log(friends);
+
+// let jonas = [`Jonas`, `Schmedtmann`, 2037 - 1991, `teacher`, friends];
+// console.log(jonas);
+
+// const calcAge = function (birthYear) {
+//     return 2037 - birthYear;
+// }
+
+// const years = [1990, 1967, 2002, 2010, 2018];
+// // NaN here, since years is an array and it cannot be subtracted from a number.
+// console.log(calcAge(years));
+
+// const age1 = calcAge(years[0]);
+// const age2 = calcAge(years[1]);
+// const age3 = calcAge(years[years.length - 1]);
+
+// console.log(age1, age2, age3);
+
+// const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])];
+// console.log(ages);
+
+
+// * 8. Basic Array Operations (Methods)
+
+// const friends = [`Michael`, `Steven`, `Peter`];
+// console.log(friends);
+
+// // Push method
+// const newLength = friends.push(`Jay`);
+// console.log(friends, newLength);
+
+// // Unshift method
+// friends.unshift(`John`);
+// console.log(friends);
+
+// // Pop method
+// friends.pop();
+// const popped = friends.pop()
+// console.log(friends, popped);
+
+// // Shift method
+// friends.shift();
+// console.log(friends);
+
+// // IndexOf method
+// console.log(friends.indexOf(`Steven`));
+// console.log(friends.indexOf(`Bob`));
+
+// // Includes method
+// console.log(friends.includes(`Bob`));
+
+// // includes() does STRICT comparison
+// friends.push(23);
+// console.log(friends.includes(`23`));
+
+// if (friends.includes(`Steven`)) {
+//     console.log(`You have a friend called Steven`);
+// }
+
+
+// * Challenge #2
+
+// const calcTip = function (bill) {
+//     return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// }
+
+// const bills = [125, 555, 44];
+// const tips = new Array(
+//     calcTip(bills[0]),
+//     calcTip(bills[1]),
+//     calcTip(bills[bills.length - 1])
+// );
+
+// const totals = [
+//     bills[0] + tips[0],
+//     bills[1] + tips[1],
+//     bills[bills.length - 1] + tips[tips.length - 1]
+// ];
+
+// console.log(bills);
+// console.log(tips);
+// console.log(totals);
+
+
+// * 9. Introduction to Objects
+
+const jonasArray = [
+    `Jonas`,
+    `Schmedtmann`,
+    2037 - 1991,
+    `teacher`,
+    [`Michael`, `Peter`, `Steven`]
+];
+
+console.log(jonasArray);
+
+const jonas = {
+    firstName: `Jonas`,
+    lastName: `Shmedtmann`,
+    age: 2037 - 1991,
+    job: `teacher`,
+    friends: [`Michael`, `Peter`, `Steven`]
 }
 
-checkWinner(scoreDolphins, scoreKoalas);
-
-// Test 2
-scoreDolphins = calcAverage(85, 54, 41);
-scoreKoalas = calcAverage(23, 34, 27);
-console.log(scoreDolphins, scoreKoalas);
-
-checkWinner(scoreDolphins, scoreKoalas);
+console.log(jonas);

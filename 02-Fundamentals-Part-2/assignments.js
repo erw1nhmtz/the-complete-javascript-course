@@ -112,29 +112,80 @@
 
 // * 4. Functions Calling Other Functions
 
-const percentageOfWorld1 = function (population) {
-    const worldPopulation = 7900;
-    return (population / worldPopulation) * 100;
+// const percentageOfWorld1 = function (population) {
+//     const worldPopulation = 7900;
+//     return (population / worldPopulation) * 100;
+// }
+
+// // Function Declaration
+// function describePopulation1(country, population) {
+//     const percentage = percentageOfWorld1(population);
+//     return `${country} has ${population} million people, which is about ${percentage}% of the world.`;
+// }
+
+// // Function Expression
+// const describePopulation2 = function (country, population) {
+//     const percentage = percentageOfWorld1(population);
+//     return `${country} has ${population} million people, which is about ${percentage}% of the world.`;
+// };
+
+// // Arrow Function
+// const describePopulation3 = (country, population) => {
+//     const percentage = percentageOfWorld1(population);
+//     return `${country} has ${population} million people, which is about ${percentage}% of the world.`
+// }
+
+// console.log(describePopulation1(`Ukraine`, 45));
+// console.log(describePopulation2(`China`, 1441));
+// console.log(describePopulation3(`USA`, 338));
+
+
+// * 5. Introduction to Arrays
+
+// const percentageOfWorld = function (population) {
+//     const worldPopulation = 7900;
+//     return (population / worldPopulation) * 100;
+// }
+
+// const populations = [1441, 45, 64, 338];
+// console.log(populations);
+
+// console.log(populations.length === 4);
+// if (populations.length === 4) {
+//     console.log(`The \"populations\" array has 4 elements!😊`);
+// } else {
+//     console.log(`The \"populations\" array has more or less than 4 elements!😒`);
+// }
+
+// const percentages = new Array(percentageOfWorld(1441), percentageOfWorld(45), percentageOfWorld(64), percentageOfWorld(338));
+// console.log(percentages);
+
+
+// * 6. Basic Array Operations (Methods)
+
+const neighbours = [`Poland`, `Moldova`, `Romania`, `Belarus`, `Hungary`];
+console.log(neighbours);
+
+console.log(`A new country called \"Utopia\" has appeared!`);
+neighbours.push(`Utopia`);
+console.log(neighbours);
+
+console.log(`But, unfortunately, it didn't live too long 😭`);
+neighbours.pop();
+console.log(neighbours);
+
+if (!neighbours.includes(`Germany`)) {
+    console.log(`Probably not a central european country :D`);
 }
 
-// Function Declaration
-function describePopulation1(country, population) {
-    const percentage = percentageOfWorld1(population);
-    return `${country} has ${population} million people, which is about ${percentage}% of the world.`;
-}
+console.log(`Changing the name of one of the neighbouring countries...`);
 
-// Function Expression
-const describePopulation2 = function (country, population) {
-    const percentage = percentageOfWorld1(population);
-    return `${country} has ${population} million people, which is about ${percentage}% of the world.`;
-};
+const indexOfBelarus = neighbours.indexOf(`Belarus`);
 
-// Arrow Function
-const describePopulation3 = (country, population) => {
-    const percentage = percentageOfWorld1(population);
-    return `${country} has ${population} million people, which is about ${percentage}% of the world.`
-}
+// 1st way
+neighbours[indexOfBelarus] = `Russia`;
+console.log(neighbours);
 
-console.log(describePopulation1(`Ukraine`, 45));
-console.log(describePopulation2(`China`, 1441));
-console.log(describePopulation3(`USA`, 338));
+// 2nd way
+// neighbours.splice(indexOfBelarus, 1, `Russia`);
+// console.log(neighbours);
