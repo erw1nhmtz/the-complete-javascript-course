@@ -276,22 +276,146 @@
 
 // * 9. Introduction to Objects
 
-const jonasArray = [
-    `Jonas`,
-    `Schmedtmann`,
-    2037 - 1991,
-    `teacher`,
-    [`Michael`, `Peter`, `Steven`]
-];
+// const jonasArray = [
+//     `Jonas`,
+//     `Schmedtmann`,
+//     2037 - 1991,
+//     `teacher`,
+//     [`Michael`, `Peter`, `Steven`]
+// ];
 
-console.log(jonasArray);
+// console.log(jonasArray);
+
+// const jonas = {
+//     firstName: `Jonas`,
+//     lastName: `Shmedtmann`,
+//     age: 2037 - 1991,
+//     job: `teacher`,
+//     friends: [`Michael`, `Peter`, `Steven`]
+// }
+
+// console.log(jonas);
+
+
+// * 10. Dot vs. Bracket Notation
+
+// const jonas = {
+//     firstName: `Jonas`,
+//     lastName: `Schmedtmann`,
+//     age: 2037 - 1991,
+//     job: `teacher`,
+//     friends: [`Michael`, `Peter`, `Steven`]
+// }
+
+// console.log(jonas);
+// console.log(jonas.lastName);
+// console.log(jonas[`lastName`]);
+
+// const nameKey = `Name`;
+
+// // Pretty useful
+// console.log(jonas[`first` + nameKey]);
+// console.log(jonas[`last` + nameKey]);
+
+// // ! CAN'T DO LIKE THAT
+// // console.log(jonas.`last` + nameKey);
+
+// const interestedIn = window.prompt(`What do you want to know about Jonas? (firstName, lastName, age, job, friends)`);
+// console.log(interestedIn);
+
+// // Non-existent property access returns 'undefined' which is falsy.
+// if (!jonas[interestedIn]) {
+//     console.log(`There is no such property :(`);
+// } else {
+//     console.log(jonas[interestedIn]);
+// }
+
+// jonas.location = `Portugal`;
+// jonas[`twitter`] = `@jonasschmedtman`;
+// console.log(jonas);
+
+// // Using Brackets
+// console.log(`${jonas[`firstName`]} has ${jonas[`friends`].length} friends, and his best friend is called ${jonas[`friends`][0]}`);
+
+// // Using Dot Operator
+// console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+
+// * 11. Object Methods 
 
 const jonas = {
     firstName: `Jonas`,
-    lastName: `Shmedtmann`,
-    age: 2037 - 1991,
+    lastName: `Schmedtmann`,
+    birthYear: 1991,
     job: `teacher`,
-    friends: [`Michael`, `Peter`, `Steven`]
+    friends: [`Michael`, `Peter`, `Steven`],
+    hasDriversLicense: true,
+
+    calcAge: function (birthYear) {
+        return 2037 - birthYear;
+    },
+
+    // Arrow Function
+    calcAge2: birthYear => 2037 - birthYear
 }
 
-console.log(jonas);
+console.log(`${jonas.firstName}'s age is: ${jonas.calcAge(1991)}`);
+
+// ! jonas[`calcAge`](1991)
+console.log(`${jonas[`firstName`]}'s age is: ${jonas[`calcAge`](1991)}`);
+
+const optimizedJonas = {
+    firstName: `Jonas`,
+    lastName: `Schmedtmann`,
+    birthYear: 1991,
+    job: `teacher`,
+    friends: [`Michael`, `Peter`, `Steven`],
+    hasDriversLicense: true,
+
+    calcAge: function () {
+        console.log(this);
+        return 2037 - jonas.birthYear;
+    }
+}
+
+console.log(optimizedJonas.calcAge());
+
+// Interesting lol
+console.log(this);
+
+const car = {
+    model: `Model 3`,
+    manufacturer: `Tesla`,
+    isNew: true,
+
+    describe: function () {
+        console.log(`Manufacturer: ${this.manufacturer}`);
+        console.log(`Model: ${this.model}`);
+        console.log(`isNew: ${this.isNew}`);
+    }
+}
+
+car.describe();
+
+const newJonas = {
+    firstName: `Jonas`,
+    lastName: `Schmedtmann`,
+    birthYear: 1991,
+    job: `teacher`,
+    friends: [`Michael`, `Peter`, `Steven`],
+    hasDriversLicense: false,
+
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;
+        return 2037 - this.birthYear;
+    },
+
+    summary: function () {
+        console.log(`${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he ${this.hasDriversLicense ? `has a` : `has no`} driver's license`);
+    }
+}
+
+console.log(newJonas.age);
+newJonas.calcAge();
+console.log(newJonas.age);
+newJonas.summary();

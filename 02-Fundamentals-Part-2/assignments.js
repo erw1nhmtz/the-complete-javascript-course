@@ -163,29 +163,107 @@
 
 // * 6. Basic Array Operations (Methods)
 
-const neighbours = [`Poland`, `Moldova`, `Romania`, `Belarus`, `Hungary`];
-console.log(neighbours);
+// const neighbours = [`Poland`, `Moldova`, `Romania`, `Belarus`, `Hungary`];
+// console.log(neighbours);
 
-console.log(`A new country called \"Utopia\" has appeared!`);
-neighbours.push(`Utopia`);
-console.log(neighbours);
+// console.log(`A new country called \"Utopia\" has appeared!`);
+// neighbours.push(`Utopia`);
+// console.log(neighbours);
 
-console.log(`But, unfortunately, it didn't live too long 😭`);
-neighbours.pop();
-console.log(neighbours);
+// console.log(`But, unfortunately, it didn't live too long 😭`);
+// neighbours.pop();
+// console.log(neighbours);
 
-if (!neighbours.includes(`Germany`)) {
-    console.log(`Probably not a central european country :D`);
+// if (!neighbours.includes(`Germany`)) {
+//     console.log(`Probably not a central european country :D`);
+// }
+
+// console.log(`Changing the name of one of the neighbouring countries...`);
+
+// const indexOfBelarus = neighbours.indexOf(`Belarus`);
+
+// // 1st way
+// neighbours[indexOfBelarus] = `Russia`;
+// console.log(neighbours);
+
+// // 2nd way
+// // neighbours.splice(indexOfBelarus, 1, `Russia`);
+// // console.log(neighbours);
+
+
+// * 7. Introduction to Objects
+
+// const ukraine = {
+//     country: `Ukraine`,
+//     capital: `Kyiv`,
+//     language: `ukrainian`,
+//     population: 45,
+//     neighbours: [`Slovakia, Romania, Moldova, Poland, Hungary`]
+// };
+
+// const describeCountry = function (country) {
+//     console.log(`Name: ${country.country}`);
+//     console.log(`Capital: ${country.capital}`);
+//     console.log(`Language: ${country.language}`);
+//     console.log(`Population: ${country.population}`);
+//     console.log(`Neighbours: ${country.neighbours}`);
+// }
+
+// const car = {
+//     manufacturer: `BMW`,
+//     model: `M5`,
+//     price: 45,
+//     country: `Ukraine`
+// }
+
+// describeCountry(ukraine);
+// describeCountry(car);
+
+
+// * 8. Dot vs. Bracket Notation
+
+// const finland = {
+//     country: `Finland`,
+//     capital: `Helsinki`,
+//     language: `finnsih`,
+//     population: 6,
+//     neighbours: [`Russia`, `Sweden`, `Norway`]
+// }
+
+// const describeViaDots = function (country) {
+//     console.log(`${country.country} has ${country.population} million ${country.language}-speaking people, ${country.neighbours.length} neighbouring countries and a capital called ${country.capital}.`);
+// }
+
+// const describeViaBrackets = function (country) {
+//     console.log(`${country[`country`]} has ${country[`population`]} million ${country[`language`]}-speaking people, ${country[`neighbours`].length} neighbouring countries and a capital called ${country[`captial`]}`);
+// }
+
+// finland.population *= 2;
+// describeViaDots(finland);
+
+// finland[`population`] = finland[`population`] - 2;
+// describeViaBrackets(finland);
+
+
+// * 9. Object Methods
+
+const myCountry = {
+    country: `Ukraine`,
+    capital: `Kyiv`,
+    language: `ukrainian`,
+    population: 45,
+    neighbours: [`Belarus`, `Russia`, `Romania`, `Moldova`, `Hungary`, `Slovakia`, `Poland`],
+
+    describe: function () {
+        console.log(`${this.country} has ${this.population} million ${this.language}-speaking people, ${this[`neighbours`].length} neighbouring countries and a capital called \"${this[`capital`]}\"`);
+    },
+
+    checkIsland: function () {
+        this.isIsland = this.neighbours.length === 0 ? true : false;
+        console.log(this.isIsland);
+        return this.isIsland;
+    }
 }
 
-console.log(`Changing the name of one of the neighbouring countries...`);
-
-const indexOfBelarus = neighbours.indexOf(`Belarus`);
-
-// 1st way
-neighbours[indexOfBelarus] = `Russia`;
-console.log(neighbours);
-
-// 2nd way
-// neighbours.splice(indexOfBelarus, 1, `Russia`);
-// console.log(neighbours);
+myCountry.describe();
+myCountry.checkIsland();
