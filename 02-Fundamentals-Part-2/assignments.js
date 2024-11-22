@@ -247,23 +247,79 @@
 
 // * 9. Object Methods
 
-const myCountry = {
-    country: `Ukraine`,
-    capital: `Kyiv`,
-    language: `ukrainian`,
-    population: 45,
-    neighbours: [`Belarus`, `Russia`, `Romania`, `Moldova`, `Hungary`, `Slovakia`, `Poland`],
+// const myCountry = {
+//     country: `Ukraine`,
+//     capital: `Kyiv`,
+//     language: `ukrainian`,
+//     population: 45,
+//     neighbours: [`Belarus`, `Russia`, `Romania`, `Moldova`, `Hungary`, `Slovakia`, `Poland`],
 
-    describe: function () {
-        console.log(`${this.country} has ${this.population} million ${this.language}-speaking people, ${this[`neighbours`].length} neighbouring countries and a capital called \"${this[`capital`]}\"`);
-    },
+//     describe: function () {
+//         console.log(`${this.country} has ${this.population} million ${this.language}-speaking people, ${this[`neighbours`].length} neighbouring countries and a capital called \"${this[`capital`]}\"`);
+//     },
 
-    checkIsland: function () {
-        this.isIsland = this.neighbours.length === 0 ? true : false;
-        console.log(this.isIsland);
-        return this.isIsland;
-    }
+//     checkIsland: function () {
+//         this.isIsland = this.neighbours.length === 0 ? true : false;
+//         console.log(this.isIsland);
+//         return this.isIsland;
+//     }
+// }
+
+// myCountry.describe();
+// myCountry.checkIsland();
+
+
+// * 11. Iteration: The For Loop
+
+// for (let voter = 1; voter <= 50; voter++) {
+//     console.log(`Voter number ${voter} is currently voting`);
+// }
+
+
+// * 12. Looping Arrays, Breaking and Continuing.
+
+// const populations = [1441, 45, 64, 338];
+// const percentages = [];
+
+// const percentageWorld = population => (population / 7900) * 100;
+
+// for (let i = 0; i < populations.length; i++) {
+//     const percentage = percentageWorld(populations[i]);
+
+//     percentages.push(percentage);
+// }
+
+// console.log(percentages);
+
+
+// * 13. Looping Backwards and Loops in Loops
+
+// const listOfNeighbours = [
+//     [`Canada`, `Mexico`],
+//     [`Spain`],
+//     [`Norway`, `Sweden`, `Russia`]
+// ];
+
+// for (let i = 0; i < listOfNeighbours.length; i++) {
+//     for (let j = 0; j < listOfNeighbours[i].length; j++) {
+//         console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
+//     }
+// }
+
+
+// * 14. The while Loop
+
+const populations = [1441, 45, 64, 338];
+const percentages = [];
+
+const percentageWorld = population => (population / 7900) * 100;
+
+let index = 0;
+while (index < populations.length) {
+    const percentage = percentageWorld(populations[index]);
+    percentages.push(percentage);
+
+    index++;
 }
 
-myCountry.describe();
-myCountry.checkIsland();
+console.log(percentages);

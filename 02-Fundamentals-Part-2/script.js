@@ -423,3 +423,156 @@
 
 // * Challenge #3
 
+// const mark = {
+//     fullName: `Mark Miller`,
+//     mass: 78,
+//     height: 1.69,
+
+//     calcBMI: function () {
+//         this.bmi = this.mass / (this.height * this.height);
+//         return this.bmi;
+//     }
+// }
+
+// const john = {
+//     fullName: `John Smith`,
+//     mass: 92,
+//     height: 1.95,
+
+//     calcBMI: function () {
+//         this.bmi = this.mass / (this.height * this.height)
+//     }
+// }
+
+// mark.calcBMI();
+// john.calcBMI();
+
+// console.log(mark.bmi, john.bmi);
+
+// if (mark.bmi > john.bmi) {
+//     console.log(`${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s BMI (${john.bmi})`);
+// } else if (john.bmi > mark.bmi) {
+//     console.log(`${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s BMI (${mark.bmi})`);
+// } else {
+//     console.log(`Their BMIs are equal!`);
+// }
+
+
+// * 12. Iteration: The For Loop
+
+// // Don't do this !
+// console.log(`Lifting weight repetition 1 🏋️`);
+// console.log(`Lifting weight repetition 2 🏋️`);
+// console.log(`Lifting weight repetition 3 🏋️`);
+// console.log(`Lifting weight repetition 4 🏋️`);
+// console.log(`Lifting weight repetition 5 🏋️`);
+// console.log(`Lifting weight repetition 6 🏋️`);
+// console.log(`Lifting weight repetition 7 🏋️`);
+// console.log(`Lifting weight repetition 8 🏋️`);
+// console.log(`Lifting weight repetition 9 🏋️`);
+// console.log(`Lifting weight repetition 10 🏋️`);
+
+// // for loop keeps running while condition is TRUE
+// for (let rep = 0; rep <= 10; rep++) {
+//     console.log(`Lifting weight repetition ${rep} 🏋️`);
+// }
+
+
+// * 13. Looping Arrays, Breaking and Continuing
+
+// const jonas = [
+//     `Jonas`,
+//     `Schmedtmann`,
+//     2037 - 1991,
+//     `teacher`,
+//     [`Michael`, `Peter`, `Steven`]
+// ];
+
+// const jonasTypes = [];
+
+// for (let i = 0; i < jonas.length; i++) {
+//     // Reading elements from an array
+//     console.log(jonas[i], typeof jonas[i]);
+
+//     // Filling types array
+//     // jonasTypes[i] = typeof jonas[i];
+//     jonasTypes.push(typeof jonas[i]);
+// }
+
+// for (let i = 0; i < jonasTypes.length; i++) {
+//     console.log(jonasTypes[i]);
+// }
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//     ages.push(2037 - years[i]);
+// }
+
+// console.log(ages);
+
+// // continue and break
+// console.log(`---- ONLY STRINGS ----`);
+// for (let i = 0; i < jonas.length; i++) {
+//     if (typeof jonas[i] !== `string`) continue;
+
+//     console.log(jonas[i], typeof jonas[i]);
+// }
+
+// console.log(`---- BREAK WITH NUMBER ----`);
+// for (let i = 0; i < jonas.length; i++) {
+//     if (typeof jonas[i] === `number`) break;
+
+//     console.log(jonas[i], typeof jonas[i]);
+// }
+
+
+// * 13. Looping Backwards and Loops in Loops
+
+// const jonas = [
+//     `Jonas`,
+//     `Schmedtmann`,
+//     2037 - 1991,
+//     `teacher`,
+//     [`Michael`, `Peter`, `Steven`]
+// ]
+
+// for (let i = jonas.length - 1; i >= 0; i--) {
+//     console.log(jonas[i]);
+// }
+
+// for (let exercise = 1; exercise < 4; exercise++) {
+//     console.log(`--- Starting exercise ${exercise} --- `);
+
+//     for (let rep = 1; rep < 6; rep++) {
+//         console.log(`Lifting weights repetition ${rep} 🏋️`);
+//     }
+// }
+
+
+// * 14. The while loop
+
+// for (let rep = 0; rep <= 5; rep++) {
+//     console.log(`Lifting weight repetition ${rep} 🏋️`);
+// }
+
+let rep = 1;
+while (rep <= 10) {
+    console.log(`Lifting weight repetition ${rep} 🏋️`);
+    rep++;
+}
+
+
+let dice = Math.trunc(Math.random() * 10) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+    dice = Math.trunc(Math.random() * 10) + 1;
+
+    console.log(`You rolled a ${dice}`);
+
+    if (dice === 6) {
+        console.log(`Loop is about to end!`);
+    }
+}
