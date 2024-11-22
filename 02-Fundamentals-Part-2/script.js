@@ -341,81 +341,85 @@
 // console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
 
 
-// * 11. Object Methods 
+// * 11. Object Methods
 
-const jonas = {
-    firstName: `Jonas`,
-    lastName: `Schmedtmann`,
-    birthYear: 1991,
-    job: `teacher`,
-    friends: [`Michael`, `Peter`, `Steven`],
-    hasDriversLicense: true,
+// const jonas = {
+//     firstName: `Jonas`,
+//     lastName: `Schmedtmann`,
+//     birthYear: 1991,
+//     job: `teacher`,
+//     friends: [`Michael`, `Peter`, `Steven`],
+//     hasDriversLicense: true,
 
-    calcAge: function (birthYear) {
-        return 2037 - birthYear;
-    },
+//     calcAge: function (birthYear) {
+//         return 2037 - birthYear;
+//     },
 
-    // Arrow Function
-    calcAge2: birthYear => 2037 - birthYear
-}
+//     // Arrow Function
+//     calcAge2: birthYear => 2037 - birthYear
+// }
 
-console.log(`${jonas.firstName}'s age is: ${jonas.calcAge(1991)}`);
+// console.log(`${jonas.firstName}'s age is: ${jonas.calcAge(1991)}`);
 
-// ! jonas[`calcAge`](1991)
-console.log(`${jonas[`firstName`]}'s age is: ${jonas[`calcAge`](1991)}`);
+// // ! jonas[`calcAge`](1991)
+// console.log(`${jonas[`firstName`]}'s age is: ${jonas[`calcAge`](1991)}`);
 
-const optimizedJonas = {
-    firstName: `Jonas`,
-    lastName: `Schmedtmann`,
-    birthYear: 1991,
-    job: `teacher`,
-    friends: [`Michael`, `Peter`, `Steven`],
-    hasDriversLicense: true,
+// const optimizedJonas = {
+//     firstName: `Jonas`,
+//     lastName: `Schmedtmann`,
+//     birthYear: 1991,
+//     job: `teacher`,
+//     friends: [`Michael`, `Peter`, `Steven`],
+//     hasDriversLicense: true,
 
-    calcAge: function () {
-        console.log(this);
-        return 2037 - jonas.birthYear;
-    }
-}
+//     calcAge: function () {
+//         console.log(this);
+//         return 2037 - jonas.birthYear;
+//     }
+// }
 
-console.log(optimizedJonas.calcAge());
+// console.log(optimizedJonas.calcAge());
 
-// Interesting lol
-console.log(this);
+// // Interesting lol
+// console.log(this);
 
-const car = {
-    model: `Model 3`,
-    manufacturer: `Tesla`,
-    isNew: true,
+// const car = {
+//     model: `Model 3`,
+//     manufacturer: `Tesla`,
+//     isNew: true,
 
-    describe: function () {
-        console.log(`Manufacturer: ${this.manufacturer}`);
-        console.log(`Model: ${this.model}`);
-        console.log(`isNew: ${this.isNew}`);
-    }
-}
+//     describe: function () {
+//         console.log(`Manufacturer: ${this.manufacturer}`);
+//         console.log(`Model: ${this.model}`);
+//         console.log(`isNew: ${this.isNew}`);
+//     }
+// }
 
-car.describe();
+// car.describe();
 
-const newJonas = {
-    firstName: `Jonas`,
-    lastName: `Schmedtmann`,
-    birthYear: 1991,
-    job: `teacher`,
-    friends: [`Michael`, `Peter`, `Steven`],
-    hasDriversLicense: false,
+// const newJonas = {
+//     firstName: `Jonas`,
+//     lastName: `Schmedtmann`,
+//     birthYear: 1991,
+//     job: `teacher`,
+//     friends: [`Michael`, `Peter`, `Steven`],
+//     hasDriversLicense: false,
 
-    calcAge: function () {
-        this.age = 2037 - this.birthYear;
-        return 2037 - this.birthYear;
-    },
+//     calcAge: function () {
+//         this.age = 2037 - this.birthYear;
+//         return 2037 - this.birthYear;
+//     },
 
-    summary: function () {
-        console.log(`${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he ${this.hasDriversLicense ? `has a` : `has no`} driver's license`);
-    }
-}
+//     summary: function () {
+//         console.log(`${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and he ${this.hasDriversLicense ? `has a` : `has no`} driver's license`);
+//     }
+// }
 
-console.log(newJonas.age);
-newJonas.calcAge();
-console.log(newJonas.age);
-newJonas.summary();
+// console.log(newJonas.age);
+// newJonas.calcAge();
+// console.log(newJonas.age);
+// newJonas.summary();
+
+
+// * Challenge #3
+
