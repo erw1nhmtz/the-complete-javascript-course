@@ -309,17 +309,79 @@
 
 // * 14. The while Loop
 
-const populations = [1441, 45, 64, 338];
-const percentages = [];
+// const populations = [1441, 45, 64, 338];
+// const percentages = [];
 
-const percentageWorld = population => (population / 7900) * 100;
+// const percentageWorld = population => (population / 7900) * 100;
 
-let index = 0;
-while (index < populations.length) {
-    const percentage = percentageWorld(populations[index]);
-    percentages.push(percentage);
+// let index = 0;
+// while (index < populations.length) {
+//     const percentage = percentageWorld(populations[index]);
+//     percentages.push(percentage);
 
-    index++;
+//     index++;
+// }
+
+// console.log(percentages);
+
+
+// * Practice
+
+const jonas = {
+    firstName: `Jonas`,
+    lastName: `Schmedtmann`,
+    birthYear: 1991,
+    hasDriversLicense: false,
+    friends: [`Michael`, `Peter`, `Steven`],
+
+    calcAge: function () {
+        return 2037 - this.birthYear;
+    },
+
+    describe: function () {
+        console.log(`My name is ${this.firstName} ${this.lastName}, I'm ${this.calcAge()}-years old, I ${this.hasDriversLicense ? `have` : `don't have`} a driver's license.`);
+
+        console.log(`My friends are: `);
+        for (let i = 0; i < this.friends.length; i++) {
+            console.log(this.friends[i]);
+        }
+    }
 }
 
-console.log(percentages);
+jonas.describe();
+console.log(jonas[`calcAge`]());
+
+const myArray = [
+    [`Ukraine`, `Russia`, `North Korea`],
+    [`USA`, `China`],
+    [`Great Britian`, `Ireland`]
+];
+
+for (let i = 0; i < myArray.length; i++) {
+    console.log(`Reading ${i + 1} pair of countries from an array...`);
+    for (let j = 0; j < myArray[i].length; j++) {
+        console.log(myArray[i][j]);
+    }
+}
+
+console.log(`======= And now, backwards =======`);
+for (let i = myArray.length - 1; i >= 0; i--) {
+    console.log(`Reading ${i + 1} pair of countries from an array...`);
+    for (let j = myArray[i].length - 1; j >= 0; j--) {
+        console.log(myArray[i][j]);
+    }
+}
+
+const testObj = {
+    firstName: `Jane`,
+    lastName: `Doe`,
+    isFragile: false,
+    colors: [`blue`, `green`, `red`],
+
+    calcAge: function (birthYear) {
+        this.birthYear = birthYear;
+        this.age = 2037 - birthYear;
+
+        return this.age;
+    }
+};
