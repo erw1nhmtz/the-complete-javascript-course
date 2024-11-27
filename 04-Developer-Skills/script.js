@@ -80,25 +80,44 @@
 
 // * 3/4. Debugging (Fixing Errors)
 
-const measureKelvin = function () {
-    const measurement = {
-        type: `temp`,
-        unit: `celsius`,
+// const measureKelvin = function () {
+//     const measurement = {
+//         type: `temp`,
+//         unit: `celsius`,
 
-        // C) FIX THE BUG
-        value: Number(window.prompt(`Degrees celsius: `))
-    };
+//         // C) FIX THE BUG
+//         value: Number(window.prompt(`Degrees celsius: `))
+//     };
 
-    // B) FIND THE BUG
-    console.table(measurement);
+//     // B) FIND THE BUG
+//     console.table(measurement);
 
-    // console.log(measurement.value);
-    // console.warn(measurement.value);
-    // console.error(measurement.value);
+//     // console.log(measurement.value);
+//     // console.warn(measurement.value);
+//     // console.error(measurement.value);
 
-    const kelvin = measurement.value + 273;
-    return kelvin;
+//     const kelvin = measurement.value + 273;
+//     return kelvin;
+// }
+
+// // A) IDENTIFY THE BUG
+// console.log(measureKelvin());
+
+
+// * Coding Challenge #1
+
+const temps1 = [17, 21, 23];
+const temps2 = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+    let forecast = `The weather forecast for the following few days: `;
+
+    for (let i = 0; i < arr.length; i++) {
+        const currentDay = i + 1;
+        forecast += `\nThe temperature will be ${arr[i]}°C in ${currentDay} ${currentDay === 1 ? `day` : `days`}`;
+    }
+
+    console.log(forecast);
 }
 
-// A) IDENTIFY THE BUG
-console.log(measureKelvin());
+printForecast(temps2);
