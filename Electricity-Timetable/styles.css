@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* outline: 1px solid red; */
+}
+
+html {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+}
+
+.logo {
+    font-size: 6rem;
+}
+
+.yellow {
+    color: yellow;
+    text-shadow: 0 0 4px black;
+}
+
+.title {
+    font-size: 2.5rem;
+}
+
+.date {
+    border: 2px solid yellow;
+    border-radius: 15px;
+    padding: 0 0.5em;
+}
+
+th, td {
+    font-size: 2.5rem;
+}
+
+.legend h3 {
+    font-size: 2.5rem;
+}
+
+.btn {
+    font-size: 2.3rem;
+}
+
+/* LAYOUT */
+
+header {
+    max-width: 700px;
+    margin: 3em auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 3em;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+table p {
+    margin: 0.5em;
+}
+
+.group-time {
+    display: flex;
+    border: 0;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-time p {
+    padding: 0.5em;
+}
+
+thead td p {
+    transform: rotate(-90deg);
+    padding: 0.5em;
+}
+
+tbody th {
+    text-align: left;
+    padding-left: 0.5em;
+}
+
+tbody td {
+    text-align: center;
+}
+
+tbody td:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.legend {
+    max-width: 700px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    margin-bottom: 3em;
+}
+
+.editor-section {
+    max-width: 700px;
+    display: flex;
+    gap: 5em;
+}
+
+.btn {
+    border: 0;
+    background-color: lightgray;
+
+    padding: 1em;
+    border-radius: 10px;
+
+    transition: all 0.25s ease;
+}
+
+.btn:hover, .edit:hover {
+    background-color: rgb(247, 247, 109);
+    /* background-color: rgb(248, 231, 202); */
+    cursor: pointer;
+}

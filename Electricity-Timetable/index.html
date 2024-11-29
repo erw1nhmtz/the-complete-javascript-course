@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>DTEK. Electricity Timetable</title>
+    
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible", content="ie=edge" />
+        <meta name="description" content="Official DTEK Electricity Timetable for Dnipro, Ukraine." />
+
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+
+    <body>
+        <header>
+            <h1 class="logo"><span class="yellow">D</span>TEK</h1>
+            <h2 class="title">Графік відключень на <span class="date">29.11.2024</span></h2>
+        </header>
+
+        <main>
+            <section class="timetable-section">
+                <table class="timetable">
+                    <thead>
+                        <tr>
+                            <th class="group-time">
+                                <p>Група</p>
+                                <p>Час</p>
+                            </th>
+                            <td><p>00-08</p></td>
+                            <td><p>08-16</p></td>
+                            <td><p>16-24</p></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <p>1</p>
+                            </th>
+                            <td>
+                                <p class="g0-h0">✅</p>
+                            </td>
+                            <td>
+                                <p class="g0-h1">✅</p>
+                            </td>
+                            <td>
+                                <p class="g0-h2">✅</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p>2</p>
+                            </th>
+                            <td>
+                                <p class="g1-h0">✅</p>
+                            </td>
+                            <td>
+                                <p class="g1-h1">✅</p>
+                            </td>
+                            <td>
+                                <p class="g1-h2">✅</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <p>3</p>
+                            </th>
+                            <td>
+                                <p class="g2-h0">✅</p>
+                            </td>
+                            <td>
+                                <p class="g2-h1">✅</p>
+                            </td>
+                            <td>
+                                <p class="g2-h2">✅</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="legend">
+                    <h3>✅ - Світло є</h3>
+                    <h3>⛔ - Світла немає</h3>
+                </div>
+            </section>
+
+            <section class="editor-section">
+                <button class="btn edit">Редагувати</button>
+                <button class="btn discard">Відміна</button>
+                <button class="btn confirm">Підтвердити</button>
+            </section>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>
