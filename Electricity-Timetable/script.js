@@ -14,11 +14,15 @@ let newTimetable = [
 ];
 let isEditing = false;
 
+<<<<<<< HEAD
 // TODO:
 // ! ADD METHOD THAT LOOPS THROUGH TWO-DIMENSIONAL ARRAY 
 // ! AND EXECUTES FUNCTION PASSED AS A SECOND PARAMETER
 
 const fillNewTimetable = function () {
+=======
+const resetNewTimetable = function () {
+>>>>>>> 1e43bd6776224d0250cbf38216bd9a27ab4373e1
     for (let i = 0; i < timetable.length; i++) {
         for (let j = 0; j < timetable[i].length; j++) {
             newTimetable[i][j] = timetable[i][j];
