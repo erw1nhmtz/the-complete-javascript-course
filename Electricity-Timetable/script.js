@@ -12,10 +12,6 @@ let newTimetable = [
     []
 ];
 
-// TODO:
-// ! ADD METHOD THAT LOOPS THROUGH TWO-DIMENSIONAL ARRAY 
-// ! AND EXECUTES FUNCTION PASSED AS A SECOND PARAMETER
-
 const resetNewTimetable = function () {
     for (let i = 0; i < timetable.length; i++) {
         for (let j = 0; j < timetable[i].length; j++) {
