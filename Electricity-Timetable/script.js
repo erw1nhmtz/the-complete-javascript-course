@@ -1,22 +1,24 @@
 'use strict';
 
 const timetable = [
-    [true, true, true],
-    [true, true, true],
-    [true, true, true]
+    [true, true, true, true, true, true],
+    [true, true, true, true, true, true],
+    [true, true, true, true, true, true],
+    [true, true, true, true, true, true]
 ];
-
 let newTimetable = [
+    [],
     [],
     [],
     []
 ];
+let isEditing = false;
 
 // TODO:
 // ! ADD METHOD THAT LOOPS THROUGH TWO-DIMENSIONAL ARRAY 
 // ! AND EXECUTES FUNCTION PASSED AS A SECOND PARAMETER
 
-const resetNewTimetable = function () {
+const fillNewTimetable = function () {
     for (let i = 0; i < timetable.length; i++) {
         for (let j = 0; j < timetable[i].length; j++) {
             newTimetable[i][j] = timetable[i][j];
@@ -31,8 +33,6 @@ const updateTimetable = function () {
         }
     }
 }
-
-let isEditing = false;
 
 const getCellText = function (value) {
     return value ? `✅` : `⛔`;
@@ -54,13 +54,12 @@ const addClickEvents = function () {
             const cell = document.querySelector(`.g${i}-h${j}`);
             cell.addEventListener(`click`, function () {
                 if (!isEditing) return;
-                console.log(timetable[i][j]);
-                
-                const cellValue = timetable[i][j];
 
+                const cellValue = timetable[i][j];
                 newTimetable[i][j] = !cellValue;
                 cell.textContent = getCellText(!cellValue);
 
+                console.log(cellValue);
                 console.log(timetable, newTimetable);
             });
         }
@@ -71,10 +70,9 @@ const resetEditButton = function () {
     document.querySelector(`.edit`).style.border = `0`;
 }
 
-updateTimetable();
 updateCells();
 addClickEvents();
-resetNewTimetable();
+fillNewTimetable();
 
 document.querySelector(`.edit`).addEventListener(`click`, function () {
     if (isEditing) return;
@@ -89,7 +87,6 @@ document.querySelector(`.discard`).addEventListener(`click`, function() {
 
     document.querySelector(`body`).style.backgroundColor = `white`;
     resetEditButton();
-    resetNewTimetable();
     updateCells();
 
     isEditing = false;
