@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Fontdiner+Swanky&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Fontdiner+Swanky&family=Honk&family=Kablammo&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --primary-color: #9400FF;
+    --background-color: #27005D;
+    --font-color: #E4F1FF;
+    --accent-color: #AED2FF; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: var(--accent-color);
+}
+
+/* LAYOUT */
+
+/* HEADER */
+header {
+    width: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.6);
+
+    position: fixed;
+    padding: 0.5em 2em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+
+.sidebar-button {
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.title {
+    font-family: "Honk", system-ui;
+    font-size: 5rem;
+
+    position: relative;
+    right: 10px;
+}
+
+main {
+    overflow: hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 30em;
+    height: 100%;
+    position: fixed;
+
+    margin-top: 7em;
+    padding: 3em 0;
+    background-color: var(--primary-color);
+    
+    border-right: 2px solid #400d88;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+
+    /* outline: 1px solid red; */
+}
+
+.sidebar-btn {
+    font-size: 2.5rem;
+    padding: 0.5em 2em;
+    width: 95%;
+
+    background-color: #4c00b7;
+    color: var(--font-color);
+    border: none;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    cursor: pointer;
+}
+
+.selected {
+    background-color: var(--background-color);
+}
+
+/* CANVAS */
+
+.canvas {
+    margin-top: 7em;
+    margin-left: 3em;
+}
+
+.canvas.shifted {
+    margin-left: 35em;
+}
+
+.canvas img {
+    width: 300px;
+    height: 300px;
+    border: 1px solid blue;
+    margin-top: 2em;
+    border-radius: 15px;
+}
+
+.canvas p {
+    width: 30em;
+    font-size: 3rem;
+    text-align: left;
+}
+
+.container {
+    display: flex;
+    gap: 8em;
+    align-items: center;
+
+    margin: 3em 0;
+}
+
+.traffic-lights {
+    background-color: rgb(103, 100, 100);
+
+    width: max-content;
+    padding: 1.5em;
+}
+
+.red-light {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(94, 1, 1);
+}
+
+.red-light.on {
+    background-color: red;
+    box-shadow: 0 0 20px 5px red;
+}
+
+.yellow-light {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(117, 117, 1);
+}
+
+.yellow-light.on {
+    background-color: yellow;
+    box-shadow: 0 0 20px 5px yellow;
+}
+
+.green-light {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(0, 88, 0);
+}
+
+.green-light.on {
+    background-color: rgb(0, 255, 0);
+    box-shadow: 0 0 20px 5px rgb(0, 255, 0);
+}
+
+.canvas h2 {
+    font-size: 3rem;
+}
+
+.canvas table {
+    font-size: 2rem;
+}
+
+.canvas table, .canvas th, .canvas td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.canvas th, .canvas td {
+    padding: 0.5em;
+}
+
+.hidden {
+    display: none;
+}
+
+/* PRESETS */

@@ -138,7 +138,7 @@ document.addEventListener(`keydown`, function(event) {
 
     if (event.key === `Escape`) {
         if (!modal.classList.contains(`hidden`) ||
-            !modal.classList.contains(`hidden`)) {
+            !overlay.classList.contains(`hidden`)) {
             hideModal();
         }
     }
