@@ -60,17 +60,19 @@ main {
     align-items: center;
 }
 
-table {
+.timetable {
     margin-bottom: 3em;
+    min-width: 850px;
 }
 
-table, th, td {
+.timetable, th, td {
     border-collapse: collapse;
     border: 2px solid;
 }
 
-table p {
-    margin: 0.5em;
+.timetable tbody p {
+    /* margin: 0.5em; */
+    padding: 0.5em;
 }
 
 .group-time {
@@ -87,7 +89,12 @@ table p {
 
 thead td p {
     transform: rotate(-90deg);
-    padding: 0.5em;
+    /* padding: 0.5em; */
+    margin: 1em 0.5em;
+    width: max-content;
+
+    position: relative;
+    left: 0.38em;
 }
 
 tbody th {
@@ -130,8 +137,84 @@ tbody td:hover {
     transition: all 0.25s ease;
 }
 
-.btn:hover, .edit:hover {
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:hover:not(.btn.yes, .btn.no), .edit:hover {
     background-color: rgb(247, 247, 109);
     /* background-color: rgb(248, 231, 202); */
     cursor: pointer;
+}
+
+/* CONFIRMATION WINDOW */
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    z-index: 10;
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+    z-index: 15;
+    background-color: white;
+    font-size: 1.8rem;
+    min-width: 25em;
+    padding: 1.5em;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+
+    text-align: center;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.25rem;
+    right: 2rem;
+
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+h1 {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.buttons-container {
+    margin-top: 1em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn.yes {
+    min-width: 5em;
+    /* text-align: center; */
+
+    background-color: rgb(83, 230, 83);
+}
+
+.btn.no {
+    min-width: 5em;
+    /* text-align: center; */
+
+    background-color: rgb(237, 55, 55);
+}
+
+.hidden {
+    display: none;
 }

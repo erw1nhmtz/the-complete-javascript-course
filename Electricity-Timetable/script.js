@@ -14,15 +14,7 @@ let newTimetable = [
 ];
 let isEditing = false;
 
-<<<<<<< HEAD
-// TODO:
-// ! ADD METHOD THAT LOOPS THROUGH TWO-DIMENSIONAL ARRAY 
-// ! AND EXECUTES FUNCTION PASSED AS A SECOND PARAMETER
-
 const fillNewTimetable = function () {
-=======
-const resetNewTimetable = function () {
->>>>>>> 1e43bd6776224d0250cbf38216bd9a27ab4373e1
     for (let i = 0; i < timetable.length; i++) {
         for (let j = 0; j < timetable[i].length; j++) {
             newTimetable[i][j] = timetable[i][j];
@@ -59,7 +51,9 @@ const addClickEvents = function () {
             cell.addEventListener(`click`, function () {
                 if (!isEditing) return;
 
-                const cellValue = timetable[i][j];
+                // const cellValue = timetable[i][j];
+
+                const cellValue = cell.textContent === '✅' ? true : false;
                 newTimetable[i][j] = !cellValue;
                 cell.textContent = getCellText(!cellValue);
 
@@ -72,6 +66,16 @@ const addClickEvents = function () {
 
 const resetEditButton = function () {
     document.querySelector(`.edit`).style.border = `0`;
+}
+
+const showModal = function () {
+    document.querySelector(`.modal`).classList.remove(`hidden`);
+    document.querySelector(`.overlay`).classList.remove(`hidden`);
+}
+
+const hideModal = function () {
+    document.querySelector(`.modal`).classList.add(`hidden`);
+    document.querySelector(`.overlay`).classList.add(`hidden`);
 }
 
 updateCells();
@@ -90,6 +94,7 @@ document.querySelector(`.discard`).addEventListener(`click`, function() {
     if (!isEditing) return;
 
     document.querySelector(`body`).style.backgroundColor = `white`;
+    fillNewTimetable();
     resetEditButton();
     updateCells();
 
@@ -99,6 +104,12 @@ document.querySelector(`.discard`).addEventListener(`click`, function() {
 document.querySelector(`.confirm`).addEventListener(`click`, function() {
     if (!isEditing) return;
 
+    showModal();
+});
+
+document.querySelector(`.yes`).addEventListener(`click`, function() {
+    hideModal();
+    
     document.querySelector(`body`).style.backgroundColor = `white`;
     resetEditButton();
 
@@ -106,4 +117,29 @@ document.querySelector(`.confirm`).addEventListener(`click`, function() {
     updateCells();
 
     isEditing = false;
+});
+
+document.querySelector(`.no`).addEventListener(`click`, function() {
+    hideModal();
+});
+
+document.querySelector(`.close-modal`).addEventListener(`click`, function () {
+    hideModal();
+});
+
+document.querySelector(`.overlay`).addEventListener(`click`, function() {
+    hideModal();
+});
+
+// * GLOBAL EVENT
+document.addEventListener(`keydown`, function(event) {
+    const modal = document.querySelector(`.modal`);
+    const overlay = document.querySelector(`.overlay`);
+
+    if (event.key === `Escape`) {
+        if (!modal.classList.contains(`hidden`) ||
+            !modal.classList.contains(`hidden`)) {
+            hideModal();
+        }
+    }
 });
