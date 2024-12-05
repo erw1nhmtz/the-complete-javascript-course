@@ -1,17 +1,32 @@
 'use strict';
 
+
+//
+// VARIABLE DECLARATIONS
+//
+
 let isSidebarOpened = true;
+// * Change this to set preset selected on page load !!!
+let currentPreset = 1;
 
 const btnSidebar = document.querySelector(`.sidebar-button`);
 const sidebar = document.querySelector(`.sidebar`);
-const btnPreset1 = document.querySelector(`.preset-1`);
-const btnPreset2 = document.querySelector(`.preset-2`);
-const btnPreset3 = document.querySelector(`.preset-3`);
+const btnsPreset = document.querySelectorAll(`.sidebar-btn`);
 
 const canvas = document.querySelector(`.canvas`);
-const lightRed = document.querySelector(`.red-light`);
-const lightYellow = document.querySelector(`.yellow-light`);
-const lightGreen = document.querySelector(`.green-light`);
+const canvasWidgets = document.querySelectorAll(`.widget`);
+const cnvsHeader2 = document.querySelector(`.header2`);
+
+const modal = document.querySelector(`.modal`);
+const overlay = document.querySelector(`.overlay`);
+const btnCloseModal = document.querySelector(`.close-modal`);
+const btnYes = document.querySelector(`.yes`);
+const btnNo = document.querySelector(`.no`);
+
+
+//
+// FUNCTION DECLARATIONS
+//
 
 const closeSidebar = function() {
     sidebar.classList.add(`hidden`);
@@ -23,16 +38,56 @@ const openSidebar = function() {
     canvas.classList.add(`shifted`);
 };
 
-const turnTrafficLight = function (rState, yState, gState) {
-    if (rState) lightRed.classList.add(`on`);
-    else lightRed.classList.remove(`on`);
-
-    if (yState) lightYellow.classList.add(`on`);
-    else lightYellow.classList.remove(`on`);
-
-    if (gState) lightGreen.classList.add(`on`);
-    else lightGreen.classList.remove(`on`);
+const selectSidebarButton = function(index) {
+    for (let i = 0; i < btnsPreset.length; i++) {
+        if (i === index-1) btnsPreset[i].classList.add(`selected`);
+        else btnsPreset[i].classList.remove(`selected`);
+    }
 }
+
+const cleanPresetClasses = function(element) {
+    for (let i = 0; i < btnsPreset.length; i++) {
+        element.classList.remove(`preset-${i+1}`);
+    }
+};
+
+const updateCanvas = function(preset) {
+    if (!preset || (typeof preset) !== `number`) preset = 1;
+
+    for (let i = 0; i < canvasWidgets.length; i++) {
+        cleanPresetClasses(canvasWidgets[i]);
+        canvasWidgets[i].classList.add(`preset-${preset}`);
+    }
+};
+
+const registerSbBtnsEvents = function() {
+    for (let i = 0; i < btnsPreset.length; i++) {
+        if (!btnsPreset[i]) return;
+
+        btnsPreset[i].addEventListener(`click`, function() {
+            const preset = i + 1;
+            selectSidebarButton(preset);
+            updateCanvas(preset);
+
+            currentPreset = preset;
+        });
+    }
+};
+
+const showModal = function() {
+    modal.classList.remove(`hidden`);
+    overlay.classList.remove(`hidden`);
+};
+
+const closeModal = function() {
+    modal.classList.add(`hidden`);
+    overlay.classList.add(`hidden`);
+};
+
+
+//
+// EVENT LISTENERS 
+//
 
 btnSidebar.addEventListener(`click`, function() {
     if (isSidebarOpened) {
@@ -44,29 +99,34 @@ btnSidebar.addEventListener(`click`, function() {
     }
 });
 
-btnPreset1.addEventListener(`click`, function() {
-    btnPreset2.classList.remove(`selected`);
-    btnPreset3.classList.remove(`selected`);
+// hardcoded unfortunately
+if (cnvsHeader2) {
+    cnvsHeader2.addEventListener(`click`, function() {
+        if (currentPreset !== 3) return; 
+        showModal();
+    });
+}
 
-    btnPreset1.classList.add(`selected`);
+overlay.addEventListener(`click`, closeModal);
+btnCloseModal.addEventListener(`click`, closeModal);
+btnNo.addEventListener(`click`, closeModal);
+btnYes.addEventListener(`click`, function() {
+    closeModal();
 
-    turnTrafficLight(true, false, false);
+    document.body.style.animation = `background 0.5s linear 0s infinite normal`;
 });
 
-btnPreset2.addEventListener(`click`, function() {
-    btnPreset1.classList.remove(`selected`);
-    btnPreset3.classList.remove(`selected`);
-
-    btnPreset2.classList.add(`selected`);
-
-    turnTrafficLight(false, true, false);
+document.addEventListener(`keydown`, function(event) {
+    if (event.key === `Escape`) closeModal();
 });
 
-btnPreset3.addEventListener(`click`, function() {
-    btnPreset1.classList.remove(`selected`);
-    btnPreset2.classList.remove(`selected`);
-    
-    btnPreset3.classList.add(`selected`);
 
-    turnTrafficLight(false, false, true);
-});
+//
+// ON PAGE LOAD
+//
+
+console.table(canvasWidgets);
+
+selectSidebarButton(currentPreset);
+updateCanvas(currentPreset);
+registerSbBtnsEvents();

@@ -20,27 +20,33 @@
 
         <main>
             <section class="sidebar">
-                <button class="sidebar-btn preset-1 selected">Preset 1</button>
-                <button class="sidebar-btn preset-2">Preset 2</button>
-                <button class="sidebar-btn preset-3">Preset 3</button>
-            </section>
+                <button class="sidebar-btn btn-1">
+                    Preset 1
+                </button>
+                <button class="sidebar-btn btn-2">
+                    Preset 2
+                </button>
+                <button class="sidebar-btn btn-3">
+                    Preset 3
+                </button>
+            </section> 
 
             <section class="canvas shifted">
-                <img src="images/cat-photo.png">
-                <p>
+                <img class="img widget" src="images/cat-photo.png">
+                <p class="paragraph widget">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolor fugiat animi eligendi distinctio, officia dolorum quas. Iusto deleniti iste nemo dolorem ducimus alias placeat, eaque voluptate nihil reiciendis veritatis sit.
                 </p>
 
                 <div class="container">
-                    <div class="traffic-lights">
-                        <div class="red-light on"></div>
+                    <div class="traffic-lights widget">
+                        <div class="red-light"></div>
                         <div class="yellow-light"></div>
                         <div class="green-light"></div>
                     </div>
 
-                    <h2>Some text</h2>
+                    <h2 class="header2 widget">Some text</h2>
 
-                    <table>
+                    <table class="table widget">
                         <thead>
                             <tr>
                                 <th>Some header</th>
@@ -74,6 +80,17 @@
                 
             </section>
         </main>
+
+        <div class="modal hidden">
+            <div class="close-modal">&times;</div>
+            <h2>Are you sure?</h2>
+            <p>Note: Think twice before you press 'Yes' !!!</p>
+            <div class="modal-buttons">
+                <button class="yes">Yes</button>
+                <button class="no">No</button>
+            </div>
+        </div>
+        <div class="overlay hidden"></div>
 
         <script src="script.js"></script>
     </body>

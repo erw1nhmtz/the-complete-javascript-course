@@ -75,7 +75,7 @@ main {
     align-items: flex-start;
     gap: 1em;
 
-    /* outline: 1px solid red; */
+    z-index: 4;
 }
 
 .sidebar-btn {
@@ -107,26 +107,103 @@ main {
     margin-left: 35em;
 }
 
-.canvas img {
-    width: 300px;
-    height: 300px;
-    border: 1px solid blue;
-    margin-top: 2em;
-    border-radius: 15px;
-}
-
-.canvas p {
-    width: 30em;
-    font-size: 3rem;
-    text-align: left;
-}
-
 .container {
     display: flex;
     gap: 8em;
     align-items: center;
 
     margin: 3em 0;
+}
+
+.hidden {
+    display: none;
+}
+
+/* MODAL */
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+
+    background-color: var(--primary-color);
+    box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
+    color: var(--font-color);
+    font-size: 2rem;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.modal h2 {
+    margin-bottom: 1em;
+}
+
+.close-modal {
+    position: absolute;
+    right: 0.4em;
+    top: 0;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+.modal-buttons {
+    margin-top: 1.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+}
+
+.yes, .no {
+    font-size: 2.5rem;
+    padding: 0.5em 1.5em;
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.yes:hover, .no:hover {
+    transform: scale(1.15);
+}
+
+.yes {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+
+.no {
+    background-color: rgb(0, 252, 0);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: 98;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(3px);
+}
+
+
+/* PRESETS */
+
+/* defaults */
+.img {
+    border: 1px solid blue;
+    margin-top: 2em;
+    border-radius: 15px;
+}
+
+.paragraph {
+    width: 30em;
+    font-size: 3rem;
 }
 
 .traffic-lights {
@@ -142,20 +219,10 @@ main {
     background-color: rgb(94, 1, 1);
 }
 
-.red-light.on {
-    background-color: red;
-    box-shadow: 0 0 20px 5px red;
-}
-
 .yellow-light {
     width: 80px;
     height: 80px;
     background-color: rgb(117, 117, 1);
-}
-
-.yellow-light.on {
-    background-color: yellow;
-    box-shadow: 0 0 20px 5px yellow;
 }
 
 .green-light {
@@ -164,30 +231,147 @@ main {
     background-color: rgb(0, 88, 0);
 }
 
-.green-light.on {
-    background-color: rgb(0, 255, 0);
-    box-shadow: 0 0 20px 5px rgb(0, 255, 0);
-}
-
-.canvas h2 {
+.header2 {
     font-size: 3rem;
 }
 
-.canvas table {
+.table {
     font-size: 2rem;
 }
 
-.canvas table, .canvas th, .canvas td {
+.table, .table th, .table td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-.canvas th, .canvas td {
+/* preset 1 */
+.paragraph.preset-1 {
+    text-align: left;
+}
+
+.img.preset-1 {
+    width: 300px;
+    height: 300px;
+}
+
+.traffic-lights.preset-1 .red-light {
+    background-color: red;
+    box-shadow: 0 0 20px 5px red;
+}
+
+.table.preset-1 th, .table.preset-1 td {
     padding: 0.5em;
 }
 
-.hidden {
-    display: none;
+/* preset 2 */
+.paragraph.preset-2 {
+    transform: rotateZ(180deg);
 }
 
-/* PRESETS */
+.img.preset-2 {
+    width: 150px;
+    height: 350px;
+}
+
+.traffic-lights.preset-2 .yellow-light {
+    background-color: yellow;
+    box-shadow: 0 0 20px 5px yellow;
+}
+
+.header2.preset-2 {
+    transform: matrix(1, 0.2, 0.2, 1, 0, 0);
+    filter: blur(1px);
+}
+
+.table.preset-2 th, .table.preset-2 td {
+    padding: 0.9em;
+}
+
+.table.preset-2, .table.preset-2 th, .table.preset-2 td {
+    border: 2px solid red;
+    border-collapse: separate;
+}
+
+/* preset 3 */
+.paragraph.preset-3 {
+    animation: paragraph 4s linear 0s infinite normal;
+}
+
+.img.preset-3 {
+    width: 200px;
+    height: 200px;
+    transform: rotateX(180deg);
+}
+
+.traffic-lights.preset-3 .green-light {
+    background-color: rgb(0, 255, 0);
+    box-shadow: 0 0 20px 5px rgb(0, 255, 0);
+}
+
+.header2.preset-3 {
+    animation: header2 1s linear 0s infinite normal;
+    cursor: pointer;
+    text-shadow: 0 0 5px var(--primary-color);
+    text-decoration: underline;
+}
+
+.table.preset-3 {
+    transform: skew(15deg, 15deg);
+    animation: table-an 2s linear 1s infinite normal;
+}
+
+
+
+/* ANIMATIONS */
+
+@keyframes paragraph {
+    0% {
+        transform: translateX(-50vw);
+    }
+
+    100% {
+        transform: translateX(90vw);
+    }
+}
+
+@keyframes header2 {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(10%);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(-10%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes table-an {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(180deg);
+    }
+}
+
+@keyframes background {
+    0% {
+        background-color: red;
+    }
+
+    100% {
+        background-color: rgb(255, 193, 193);
+    }
+}
