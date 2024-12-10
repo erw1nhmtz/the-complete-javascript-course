@@ -1,6 +1,5 @@
 'use strict';
 
-
 //
 // VARIABLE DECLARATIONS
 //
@@ -25,8 +24,16 @@ const btnNo = document.querySelector(`.no`);
 
 
 //
-// FUNCTION DECLARATIONS
+// FUNCTIONS
 //
+
+const init = function () {
+    console.table(canvasWidgets);
+
+    selectSidebarButton(currentPreset);
+    updateCanvas(currentPreset);
+    registerSbBtnsEvents();
+}; 
 
 const closeSidebar = function() {
     sidebar.classList.add(`hidden`);
@@ -86,7 +93,7 @@ const closeModal = function() {
 
 
 //
-// EVENT LISTENERS 
+// EVENTS 
 //
 
 btnSidebar.addEventListener(`click`, function() {
@@ -122,11 +129,7 @@ document.addEventListener(`keydown`, function(event) {
 
 
 //
-// ON PAGE LOAD
+// INIT
 //
 
-console.table(canvasWidgets);
-
-selectSidebarButton(currentPreset);
-updateCanvas(currentPreset);
-registerSbBtnsEvents();
+init();
