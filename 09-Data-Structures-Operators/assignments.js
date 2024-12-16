@@ -265,6 +265,7 @@ const books = [
         publisher: `Bantam books`,
         onlineContent: true,
         highlighted: true,
+        pages: 700,
         edition: 3,
         thirdParty: {
             goodreads: {
@@ -281,6 +282,7 @@ const books = [
         author: [`George R.R. Martin`, `Some other dude`],
         ISBN: 6504187002,
         onlineContent: false,
+        pages: 900,
         edition: undefined,
         publisher: `Bantam books`,
         keywords: [`beep`, `bop`, `beep`],
@@ -291,6 +293,7 @@ const books = [
         title: `Storm of Swords`,
         author: [`George R.R. Martin`, `Some other dude`, `Some other dude 2`],
         onlineContent: false,
+        pages: 1200,
         edition: undefined,
         ISBN: 1439013314,
         highlighted: true,
@@ -301,6 +304,7 @@ const books = [
         title: `Feast of Crows`,
         author: `George R.R. Martin`,
         edition: undefined,
+        pages: 750,
         ISBN: 5586956527,
         highlighted: true, 
         keywords: [`bop`, `bop`, `beep`]
@@ -309,8 +313,8 @@ const books = [
         title: `Dance with the Dragons`,
         author: `George R.R. Martin`,
         edition: undefined,
+        pages: 900,
         ISBN: 9373546023,
-        keywords: [`beep`, `bop`, `boop`],
         highlighted: true,
         language: `English`
     }
@@ -347,17 +351,115 @@ const books = [
 
 // * 7.1
 
-for (let i = 0; i < books.length; i++) {
-    books[i].edition ||= 1;
+// for (let i = 0; i < books.length; i++) {
+//     books[i].edition ||= 1;
+// }
+
+
+// // * 7.2
+
+// for (let i = 0; i < books.length; i++) {
+//     books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2);
+// }
+
+// for (let i = 0; i < books.length; i++) {
+//     console.log(books[i]);
+// }
+
+
+// * 8. Looping arrays: The for-of loop
+
+// // * 8.1 
+// let sumOfPages = 0;
+// for (const book of books) {
+//     sumOfPages += book.pages;
+// }
+// console.log(sumOfPages);
+
+// // * 8.2
+
+// const allAuthors = [];
+// for (const book of books) {
+//     const authors = book.author;
+//     if ((typeof authors) === `string`) allAuthors.push(authors);
+//     else if ((typeof authors) === `object`) allAuthors.push(...authors);
+// }
+
+// console.log(allAuthors);
+
+// // * 8.3
+
+// console.log(`-------------------------`);
+// for (const [index, el] of allAuthors.entries()) {
+//     console.log(`${index + 1}: ${el}`);
+// }
+
+
+// * 9. Enhanced Object Literals
+
+// * 9.1
+
+// const bookData = [
+//     [`title`, `Computer Networking: A Top-Down Approach`],
+//     [`author`, [`James F. Kurose`, `Keith W. Ross`]],
+//     [`publisher`, `Addison Wesley`]
+// ];
+
+// const newBook = {
+//     [bookData[0][0]]: bookData[0][1],
+//     [bookData[1][0]]: bookData[1][1],
+//     [bookData[2][0]]: bookData[2][1]
+// };
+
+// console.log(newBook);
+
+// // * 9.2
+
+// const pages = 880;
+
+// const newBook2 = {
+//     title: `The C Programming Language`,
+//     author: [`Brian W. Kernighan`, `Dennis M. Ritchie`],
+//     pages
+// };
+
+// console.log(newBook2);
+
+
+// * 10. Optional chaining (?.)
+
+// const getFirstKeyword = function(book) {
+//     return book.keywords?.[0];
+// }
+
+// for (const book of books) {
+//     console.log(getFirstKeyword(book));
+// }
+
+
+// * 11. Looping Objects: Object keys, values and entries
+
+// * 11.1
+
+let entries = [];
+for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+    entries.push(key);
 }
+console.log(entries);
 
+// * 11.2
 
-// * 7.2
+// for (const [index, value] of Object.values(books[0].thirdParty.goodreads).entries()) {
+//     entries[index] = [index, value];
+// }
+// console.log(entries);
 
-for (let i = 0; i < books.length; i++) {
-    books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2);
-}
+// * 11.3
 
-for (let i = 0; i < books.length; i++) {
-    console.log(books[i]);
-}
+const entries2 = Object.entries(books[0].thirdParty.goodreads);
+console.log(entries2);
+
+// * 11.4
+
+console.log(entries);
+console.log(entries2);

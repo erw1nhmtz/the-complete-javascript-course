@@ -371,27 +371,245 @@ const restaurant = {
 
 // * 7. Logical Assignment Operators
 
-const rest1 = {
-    name: `Capri`,
-    numGuests: 20,
-};
+// const rest1 = {
+//     name: `Capri`,
+//     numGuests: 20,
+// };
 
-const rest2 = {
-    name: `La Piazza`,
-    owner: `Giovanni Rossi`,
-    numGuests: undefined
-};
+// const rest2 = {
+//     name: `La Piazza`,
+//     owner: `Giovanni Rossi`,
+//     numGuests: undefined
+// };
 
-rest2.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
-console.log(rest1);
-console.log(rest2);
+// console.log(rest1);
+// console.log(rest2);
 
-// rest1.owner = rest1.owner && `<ANONYMOUS>`;
+// // rest1.owner = rest1.owner && `<ANONYMOUS>`;
 
-// Old way
-// rest2.owner = rest2.owner && `<ANONYMOUS>`;
+// // Old way
+// // rest2.owner = rest2.owner && `<ANONYMOUS>`;
 
-// New way 
-rest2.owner &&= `ANONYMOUS`;
-console.log(rest2);
+// // New way 
+// rest2.owner &&= `ANONYMOUS`;
+// console.log(rest2);
+
+
+// * Challenge #1
+
+// const players1 = [
+//     "Bayern Munich",
+//     "Noah Parker",
+//     "Oliver Harris",
+//     "Elijah Mitchell",
+//     "James Carter",
+//     "William Roberts",
+//     "Benjamin Phillips",
+//     "Lucas Campbell",
+//     "Henry Evans",
+//     "Jack Edwards",
+//     "Alexander Collins"
+// ];
+
+// const players2 = [
+//     "Olivia Green",
+//     "Emma Baker",
+//     "Charlotte Adams",
+//     "Amelia Turner",
+//     "Ava Nelson",
+//     "Sophia Flores",
+//     "Isabella Morris",
+//     "Mia Reed",
+//     "Evelyn Cook",
+//     "Harper Morgan",
+//     "Camila Bell"  
+// ];
+
+// const game = {
+//     team1: players1,
+//     team2: players2,
+//     odds: {
+//         players1: 15,
+//         draw: 25,
+//         players2: 60
+//     }
+// };
+
+// const printGoals = function(...names) {
+//     for (let i = 0; i < names.length; i++) {
+//         console.log(`Player ${i+1}: ${names[i]}`);
+//     }
+//     console.log(`${names.length} goals were scored`);
+// };
+
+// const [gk, ...fieldPlayers] = players1;
+// console.log(gk, fieldPlayers);
+
+// const allPlayers = [...players1, ...players2];
+// console.log(allPlayers);
+
+// const players1Final = [...players1, `Thiago`, `Coutinho`, `Periscic`];
+// console.log(players1Final);
+
+// const {odds: {players1: team1 = `15%`, draw = `25%`, players2: team2 = `60%`}} = game;
+// console.log(team1, draw, team2);
+
+// printGoals(`test1`, `test2`);
+// printGoals(...game.team1);
+// printGoals(...players2);
+
+// (game.odds.players1 > game.odds.players2) && console.log(`First team is more likely to win 🎉`);
+
+// (game.odds.players2 > game.odds.players1) && console.log(`Second team is more likely to win 🎉`);
+
+
+// * 8. Looping arrays: The for-of loop
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+// // The old way (Boring!)
+// for (let i = 0; i < menu.length; i++) {
+//     console.log(menu[i]);
+// }
+
+// // A new way (Fun!). Introduced in ES6
+
+// for (const item of menu) {
+//     console.log(item);
+// }
+
+// for (const item of menu.entries()) {
+//     console.log(item);
+// }
+
+// console.log([...menu.entries()]);
+
+// for (const item of menu.entries()) {
+//     // The old way
+//     console.log(`${item[0] + 1}: ${item[1]}`);
+
+//     // A new way
+//     const [index, element] = item;
+//     console.log(`${index + 1}: ${element}`);
+// }
+
+// // Even better way
+// console.log(`-------------------------------`);
+// for (const [index, element] of menu.entries()) {
+//     console.log(`${index + 1}: ${element}`);
+// }
+
+
+// * 9. Enhanced Object Literals
+
+// const weekdays = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+
+// const openingHours = {
+//     [weekdays[3]]: {
+//         open: 12,
+//         close: 22
+//     },
+//     fri: {
+//         open: 11,
+//         close: 23
+//     },
+//     sat: {
+//         open: 0, // Open 24 hours
+//         close: 24
+//     }
+// };
+
+// const restaurant = {
+//     name: `Classico Italiano`,
+//     location: `Via Angelo Tavanti 23, Firenze, Italy`,
+//     categories: [`Italian`, `Pizzeria`, `Vegetarian`, `Organic`],
+//     starterMenu: [`Focaccia`, `Bruschetta`, `Garlic Bread`, `Caprese Salad`],
+//     mainMenu: [`Pizza`, `Pasta`, `Risotto`],
+
+//     // ES6 Enhanced object literals
+//     openingHours,
+
+//     order(starterIndex, mainIndex) {
+//         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+//     },
+
+//     orderDelivery({starterIndex = 1, mainIndex = 0, time = `20:00`, address}) {
+//         console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+//     },
+
+//     orderPasta(ing1, ing2, ing3) {
+//         console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`);
+//     },
+
+//     orderPizza(mainIngredient, ...otherIngredients) {
+//         console.log(mainIngredient);
+//         console.log(otherIngredients);
+//     }
+// };
+
+
+// * 10. Optional Chaining (?.)
+
+// if (restaurant.openingHours && restaurant.openingHours.mon) {
+//     console.log(restaurant.openingHours.mon.open);
+// }
+
+// // With optional chaining
+
+// console.log(restaurant.openingHours.mon?.open);
+
+// // Example
+// const days = [`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`];
+// for (const day of days) {
+//     console.log(day);
+//     const open = restaurant.openingHours[day]?.open;
+//     console.log(`On ${day}, we open at ${open ?? `closed`}`);
+// }
+
+// // Methods
+
+// console.log(restaurant.order?.(0, 1) ?? `Method doesn't exist`);
+// console.log(restaurant.tes?.(`abs`, false) ?? `Method doesn't exist`);
+
+// const users = [
+//     {name: `Jonas`, email: `hello@jonas.io`}  
+// ];
+
+// console.log(users[0]?.name ?? `User array empty`);
+
+
+// * 11. Looping Objects: Object Keys, Values, and Entries
+
+// const openingHours = {
+//     thu: {
+//         open: 12,
+//         close: 22
+//     },
+//     fri: {
+//         open: 11,
+//         close: 23
+//     },
+//     sat: {
+//         open: 0, // Open 24 hours
+//         close: 24
+//     }
+// };
+
+// const properties = Object.keys(openingHours);
+// console.log(properties);
+
+// const values = Object.values(openingHours);
+// console.log(values);
+
+// const entries = Object.entries(openingHours);
+// console.log(entries);
+
+// for (const day of Object.keys(openingHours)) {
+//     console.log(day);
+// }
+
+// for (const [key, {open, close}] of entries) {
+//     console.log(key, open, close);
+// }
