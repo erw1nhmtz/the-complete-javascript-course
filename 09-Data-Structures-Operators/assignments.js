@@ -316,7 +316,8 @@ const books = [
         pages: 900,
         ISBN: 9373546023,
         highlighted: true,
-        language: `English`
+        language: `English`,
+        keywords: [`bop`, `bop`, `beep`]
     }
 ];
 
@@ -441,25 +442,64 @@ const books = [
 
 // * 11.1
 
-let entries = [];
-for (const key of Object.keys(books[0].thirdParty.goodreads)) {
-    entries.push(key);
-}
-console.log(entries);
-
-// * 11.2
-
-// for (const [index, value] of Object.values(books[0].thirdParty.goodreads).entries()) {
-//     entries[index] = [index, value];
+// let entries = [];
+// for (const key of Object.keys(books[0].thirdParty.goodreads)) {
+//     entries.push(key);
 // }
 // console.log(entries);
 
-// * 11.3
+// // * 11.2
 
-const entries2 = Object.entries(books[0].thirdParty.goodreads);
-console.log(entries2);
+// // for (const [index, value] of Object.values(books[0].thirdParty.goodreads).entries()) {
+// //     entries[index] = [index, value];
+// // }
+// // console.log(entries);
 
-// * 11.4
+// // * 11.3
 
-console.log(entries);
-console.log(entries2);
+// const entries2 = Object.entries(books[0].thirdParty.goodreads);
+// console.log(entries2);
+
+// // * 11.4
+
+// console.log(entries);
+// console.log(entries2);
+
+
+// * 12 Sets
+
+// * 12.1
+
+const allKeywords = [];
+
+for (const book of books) {
+    allKeywords.push(...book.keywords);
+}
+
+console.log(allKeywords);
+
+// * 12.2
+
+const uniqueKeywords = new Set(allKeywords);
+console.log(uniqueKeywords);
+
+// * 12.3
+
+uniqueKeywords.add(`coding`);
+uniqueKeywords.add(`science`);
+console.log(uniqueKeywords);
+
+// * 12.4
+
+uniqueKeywords.delete(`business`);
+console.log(uniqueKeywords);
+
+// * 12.5
+
+const uniqueKeywordsArr = [...uniqueKeywords];
+console.log(uniqueKeywordsArr);
+
+// * 12.6
+
+uniqueKeywords.clear();
+console.log(uniqueKeywords);

@@ -613,3 +613,172 @@ const restaurant = {
 // for (const [key, {open, close}] of entries) {
 //     console.log(key, open, close);
 // }
+
+// const arr = [12, 32, `abc`, -3.53];
+
+// const entries = Object.entries(arr);
+
+// for (const [index, element] of entries) {
+//     console.log(index, element);
+// }
+
+
+// * Challenge #2
+
+// const game = {
+//     team1: `Bayern Munich`,
+//     team2: `Borussia Dortmund`,
+//     players: [
+//         [
+//             'Neuer',
+//             'Pavard',
+//             'Martinez',
+//             'Alaba',
+//             'Davies',
+//             'Kimmich',
+//             'Goretzka',
+//             'Coman',
+//             'Muller',
+//             'Gnarby',
+//             'Lewandowski'
+//         ],
+//         [
+//             'Burki',
+//             'Schulz',
+//             'Hummels',
+//             'Akanji',
+//             'Hakimi',
+//             'Weigl',
+//             'Witsel',
+//             'Hazard',
+//             'Brandt',
+//             'Sancho',
+//             'Gotze'
+//         ]
+//     ],
+//     score: `4:0`,
+//     scored: [`Lewandowski`, `Gnarby`, `Lewandowski`, `Hummels`],
+//     date: `Nov 9th, 2037`,
+//     odds: {
+//         team1: 1.33,
+//         x: 3.25,
+//         team2: 6.5
+//     }
+// };
+
+// // * Task 1
+
+// for (const [goalNum, goalPlayer] of game.scored.entries()) {
+//     console.log(`Goal ${goalNum + 1}: ${goalPlayer}`);
+// }
+
+// // * Task 2
+
+// let oddSum = 0;
+// for (const odd of Object.values(game.odds)) {
+//     oddSum += odd;
+// }
+
+// const oddAverage = oddSum / Object.keys(game.odds).length;
+
+// // Just to be sure
+// console.log(oddAverage);
+// console.log(oddSum / 3);
+
+// // * Task 3
+
+// console.log(`------------Task 3------------`);
+
+// for (const [result, odd] of Object.entries(game.odds)) {
+//     const teamStr = `Odd of ` + (result === `x` ? `draw` : `victory ${game[result]}`);
+//     console.log(`${teamStr}: ${odd}`);
+// }
+
+// // * Task 4
+
+// const result = {};
+
+// for (const goal of game.scored) {
+//     if (!result[goal]) result[goal] = 0;
+//     result[goal] += 1;
+// }
+
+// console.log(result);
+
+
+// * 12. Sets
+
+// const ordersSet = new Set([
+//     `Pasta`,
+//     `Pizza`,
+//     `Pizza`,
+//     `Risotto`,
+//     `Pasta`,
+//     `Pizza`
+// ]);
+
+// console.log(ordersSet);
+// console.log(ordersSet.size);
+// console.log(ordersSet.has(`Bread`));
+// console.log(ordersSet.has(`Pizza`));
+// console.log(ordersSet);
+
+// for (const order of ordersSet) {
+//     console.log(order);
+// }
+
+// // Example 
+// const staff = [`Waiter`, `Chef`, `Waiter`, `Manager`, `Chef`, `Waiter`];
+
+// const uniqueStaff = [...new Set(staff)];
+// console.log(uniqueStaff);
+
+
+// * 13. New Operations to make Sets useful
+
+const italianFoods = new Set([
+    `pasta`,
+    `gnocchi`,
+    `tomatoes`,
+    `olive oil`,
+    `garlic`,
+    `basil`
+]);
+
+const mexicanFoods = new Set([
+    `tortillas`,
+    `beans`,
+    `rice`,
+    `tomatoes`,
+    `avocado`,
+    `garlic`
+]);
+
+const commonFoods = italianFoods.intersection(mexicanFoods);
+console.log(commonFoods);
+console.log([...commonFoods]);
+
+const italianMexicanFusion = italianFoods.union(mexicanFoods);
+console.log(italianMexicanFusion);
+
+// Old way
+
+const unionF = function (...arrays) {
+    let combinedArrays = [];
+    for (const array of arrays) {
+        combinedArrays = [...combinedArrays, ...array];
+    }
+    const uniqueArray = [...new Set(combinedArrays)];
+    console.log(uniqueArray);
+}
+
+const combinedArray = [...new Set([
+    ...mexicanFoods,
+    ...italianFoods
+])];
+console.log(combinedArray);
+
+unionF(mexicanFoods, italianFoods, [`test1`, `test2`]);
+
+const uniqueItalian = italianFoods.difference(mexicanFoods);
+console.log(`Difference italian`, uniqueItalian);
