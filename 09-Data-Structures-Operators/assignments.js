@@ -466,40 +466,91 @@ const books = [
 // console.log(entries2);
 
 
-// * 12 Sets
+// * 12. Sets
 
-// * 12.1
+// // * 12.1
 
-const allKeywords = [];
+// const allKeywords = [];
 
-for (const book of books) {
-    allKeywords.push(...book.keywords);
+// for (const book of books) {
+//     allKeywords.push(...book.keywords);
+// }
+
+// console.log(allKeywords);
+
+// // * 12.2
+
+// const uniqueKeywords = new Set(allKeywords);
+// console.log(uniqueKeywords);
+
+// // * 12.3
+
+// uniqueKeywords.add(`coding`);
+// uniqueKeywords.add(`science`);
+// console.log(uniqueKeywords);
+
+// // * 12.4
+
+// uniqueKeywords.delete(`business`);
+// console.log(uniqueKeywords);
+
+// // * 12.5
+
+// const uniqueKeywordsArr = [...uniqueKeywords];
+// console.log(uniqueKeywordsArr);
+
+// // * 12.6
+
+// uniqueKeywords.clear();
+// console.log(uniqueKeywords);
+
+
+// * 13. Sets
+
+// // * 13.1
+
+// // First way
+// const bookMap1 = new Map();
+// bookMap1.set(`title`, `Clean Code`);
+// bookMap1.set(`author`, `Robert C. Martin`);
+// console.log(bookMap1);
+
+// // Second way
+// const bookMap = new Map([
+//     [`title`, `Clean Code`],
+//     [`author`, `Robert C. Martin`]
+// ]);
+// console.log(bookMap);
+
+// // * 13.2
+
+// bookMap.set(`pages`, 464);
+// console.log(bookMap);
+
+// // * 13.3
+
+// const title = bookMap.get(`title`);
+// const author = bookMap.get(`author`);
+// console.log(`${title} by ${author}`);
+
+// // * 13.4
+
+// console.log(bookMap.size);
+
+// // * 13.5
+
+// if (bookMap.has(`author`)) console.log(`The author of the book is known`);
+
+
+// * 14. Maps: Iteration
+
+// * 14.1
+
+const firstBookMap = new Map(Object.entries(books[0]));
+console.log(firstBookMap);
+
+// * 14.2
+
+for (const [key, value] of firstBookMap) {
+    if (typeof key === `number`) console.log(key, value);
 }
-
-console.log(allKeywords);
-
-// * 12.2
-
-const uniqueKeywords = new Set(allKeywords);
-console.log(uniqueKeywords);
-
-// * 12.3
-
-uniqueKeywords.add(`coding`);
-uniqueKeywords.add(`science`);
-console.log(uniqueKeywords);
-
-// * 12.4
-
-uniqueKeywords.delete(`business`);
-console.log(uniqueKeywords);
-
-// * 12.5
-
-const uniqueKeywordsArr = [...uniqueKeywords];
-console.log(uniqueKeywordsArr);
-
-// * 12.6
-
-uniqueKeywords.clear();
-console.log(uniqueKeywords);

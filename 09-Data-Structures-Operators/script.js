@@ -582,20 +582,20 @@ const restaurant = {
 
 // * 11. Looping Objects: Object Keys, Values, and Entries
 
-// const openingHours = {
-//     thu: {
-//         open: 12,
-//         close: 22
-//     },
-//     fri: {
-//         open: 11,
-//         close: 23
-//     },
-//     sat: {
-//         open: 0, // Open 24 hours
-//         close: 24
-//     }
-// };
+const openingHours = {
+    thu: {
+        open: 12,
+        close: 22
+    },
+    fri: {
+        open: 11,
+        close: 23
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24
+    }
+};
 
 // const properties = Object.keys(openingHours);
 // console.log(properties);
@@ -736,49 +736,169 @@ const restaurant = {
 
 // * 13. New Operations to make Sets useful
 
-const italianFoods = new Set([
-    `pasta`,
-    `gnocchi`,
-    `tomatoes`,
-    `olive oil`,
-    `garlic`,
-    `basil`
+// const italianFoods = new Set([
+//     `pasta`,
+//     `gnocchi`,
+//     `tomatoes`,
+//     `olive oil`,
+//     `garlic`,
+//     `basil`
+// ]);
+
+// const mexicanFoods = new Set([
+//     `tortillas`,
+//     `beans`,
+//     `rice`,
+//     `tomatoes`,
+//     `avocado`,
+//     `garlic`
+// ]);
+
+// const commonFoods = italianFoods.intersection(mexicanFoods);
+// console.log(commonFoods);
+// console.log([...commonFoods]);
+
+// const italianMexicanFusion = italianFoods.union(mexicanFoods);
+// console.log(italianMexicanFusion);
+
+// // Old way
+
+// const unionF = function (...arrays) {
+//     let combinedArray = [];
+//     for (const array of arrays) {
+//         // combinedArray = [...combinedArray, ...array];
+//         combinedArray.push(...array);
+//     }
+//     const uniqueArray = [...new Set(combinedArray)];
+//     console.log(uniqueArray);
+// }
+
+// const combinedArray = [...new Set([
+//     ...mexicanFoods,
+//     ...italianFoods
+// ])];
+// console.log(combinedArray);
+
+// unionF(mexicanFoods, italianFoods, [`test1`, `test2`]);
+
+// const uniqueItalian = italianFoods.difference(mexicanFoods);
+// console.log(`Difference italian`, uniqueItalian);
+
+
+// * 14. Maps: Fundamentals
+
+// const rest = new Map();
+
+// rest.set(`name`, `Classico Italiano`);
+// rest.set(1, `Firenze, Italy`);
+
+// console.log(rest.set(2, `Lisbon, Portugal`));
+
+// rest
+//     .set(`categories`, [`Italian`, `Pizzeria`, `Vegetarian`, `Organic`])
+//     .set(`open`, 11)
+//     .set(`close`, 23)
+//     .set(true, `We are open :D`)
+//     .set(false, `We are closed :(`);
+
+// console.log(rest.get(`name`));
+// console.log(rest.get(true));
+// console.log(rest.get(1));
+
+// const time = 10;
+// console.log(rest.get(time > rest.get(`open`) && time < rest.get(`close`)));
+
+// console.log(rest.has(`categories`));
+// rest.delete(2);
+// console.log(rest.has(2));
+// console.log(rest.size);
+// console.log(rest.clear());
+
+// const arr = [1, 2];
+// rest.set(arr, `Test`);
+// rest.set(document.querySelector(`h1`), `Heading`);
+// console.log(rest);
+// console.log(rest.size);
+
+// console.log(rest.get(arr));
+
+
+// * 15. Maps: Iteration
+
+// // This way is preferred instead of using .set()
+// // when initializing a Map.
+// const question = new Map([
+//     [`question`, `What is the best programming language in the world?`],
+//     [1, `C`],
+//     [2, `Java`],
+//     [3, `JavaScript`],
+//     [`correct`, 3],
+//     [true, `Correct 🎉`],
+//     [false, `Try again!`]
+// ]);
+
+// // Convert object to map
+// console.log(Object.entries(openingHours));
+// const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap);
+
+// for (const [key, value] of question) {
+//     if (typeof key === `number`) console.log(key, value);
+// }
+
+// // const answer = Number(window.prompt(`Your answer: `));
+// const answer = 3;
+// console.log(answer);
+
+// console.log(question.get(answer === question.get(`correct`)));
+
+// // Convert map to array
+// console.log([...question]);
+
+
+// * 16. Challenge #3
+
+const gameEvents = new Map([
+    [17, `⚽ GOAL`],
+    [36, `🔁 Substitution`],
+    [47, `⚽ GOAL`],
+    [61, `🔁 Substitution`],
+    [64, `🟨 Yellow card`],
+    [69, `🔴 Red card`],
+    [70, `🔁 Substitution`],
+    [72, `🔁 Substitution`],
+    [76, `⚽ GOAL`],
+    [80, `⚽ GOAL`],
+    [92, `🟨 Yellow card`]
 ]);
 
-const mexicanFoods = new Set([
-    `tortillas`,
-    `beans`,
-    `rice`,
-    `tomatoes`,
-    `avocado`,
-    `garlic`
-]);
+// * Task 1
 
-const commonFoods = italianFoods.intersection(mexicanFoods);
-console.log(commonFoods);
-console.log([...commonFoods]);
+// LOL 
+let events = [];
+for (const value of gameEvents.values()) events.push(value);
+events = [...new Set(events)];
 
-const italianMexicanFusion = italianFoods.union(mexicanFoods);
-console.log(italianMexicanFusion);
+// More convenient way
+events = [...new Set(gameEvents.values())];
+console.log(events);
 
-// Old way
+// * Task 2
 
-const unionF = function (...arrays) {
-    let combinedArrays = [];
-    for (const array of arrays) {
-        combinedArrays = [...combinedArrays, ...array];
-    }
-    const uniqueArray = [...new Set(combinedArrays)];
-    console.log(uniqueArray);
+gameEvents.delete(64);
+console.log(gameEvents);
+
+// * Task 3
+
+const eventAverageFrequency = 90 / gameEvents.size;
+console.log(`An event happened, on average, every ${eventAverageFrequency} minutes.`);
+
+// * Task 4
+
+for (const [k, v] of gameEvents) {
+    let halfStr = ``;
+    if (k > 0 && k <= 45) halfStr = `[FIRST HALF]`;
+    else if (k > 45) halfStr = `[SECOND HALF]`;
+
+    console.log(`${halfStr} ${k}: ${v}`);
 }
-
-const combinedArray = [...new Set([
-    ...mexicanFoods,
-    ...italianFoods
-])];
-console.log(combinedArray);
-
-unionF(mexicanFoods, italianFoods, [`test1`, `test2`]);
-
-const uniqueItalian = italianFoods.difference(mexicanFoods);
-console.log(`Difference italian`, uniqueItalian);
