@@ -544,13 +544,86 @@ const books = [
 
 // * 14. Maps: Iteration
 
-// * 14.1
+// // * 14.1
 
-const firstBookMap = new Map(Object.entries(books[0]));
-console.log(firstBookMap);
+// const firstBookMap = new Map(Object.entries(books[0]));
+// console.log(firstBookMap);
 
-// * 14.2
+// // * 14.2
 
-for (const [key, value] of firstBookMap) {
-    if (typeof key === `number`) console.log(key, value);
+// for (const [key, value] of firstBookMap) {
+//     if (typeof key === `number`) console.log(key, value);
+// }
+
+
+// * 15. Working with Strings - Part 1
+
+// // * 15.1
+
+// const ISBN = `6322983997`;
+// console.log(ISBN[6], ISBN[4], ISBN[9], ISBN[8]);
+
+// // * 15.2
+
+// const quote = 'A computer once beat me at chess, but it was no match for me at kick boxing';
+
+// console.log(quote.indexOf(`chess`));
+
+// // * 15.3
+
+// console.log(quote.slice(quote.lastIndexOf(`boxing`)));
+
+// for (const char of quote.slice(quote.lastIndexOf(`boxing`))) console.log(char);
+
+// // * 15.4
+
+// const isContributor = function(author) {
+//     return author.indexOf(`(Contributor)`) != -1 ? true : false;
+// };
+
+// console.log(isContributor(`Julie Sussman (Contributor)`));
+// console.log(isContributor(`Robert Sedgewick`));
+
+
+// * 16. Working with Strings - Part 2
+
+// * 16.1
+
+const normalizeAuthorName = function(author) {
+    const normalizedAuthor = author
+        .toLowerCase()
+        .trim()
+        .replace(`(contributor)`, ``);
+    const firstName = normalizedAuthor.slice(0, normalizedAuthor.indexOf(` `));
+    const lastName = normalizedAuthor.slice(normalizedAuthor.indexOf(` `) + 1);
+    return firstName[0].toUpperCase() + 
+            firstName.slice(1) + 
+            ` ` + 
+            lastName[0].toUpperCase() +
+            lastName.slice(1);
+};
+
+console.log(normalizeAuthorName(`    JulIE sussMAn (ContributOR)`));
+
+// * 16.2
+
+const title = books[1].title;
+console.log(title);
+const newBookTitle = title.replace(`Kings`, `Queens`);
+console.log(newBookTitle);
+
+// * 16.3
+
+const logBookTheme = function(title) {
+    title = title.toLowerCase();
+
+    if (title.startsWith(`computer`)) {
+        console.log(`This book is about computers`);
+    } else if (title.includes(`algorithms`) || title.includes(`structures`)) {
+        console.log(`This book is about algorithms and data structures`);
+    } else if ((title.endsWith(`system`) || title.endsWith(`systems`)) && !title.includes(`operating`)) {
+        console.log(`This book is about some systems, but definitely not about operating systems`);
+    }
 }
+
+logBookTheme(title)

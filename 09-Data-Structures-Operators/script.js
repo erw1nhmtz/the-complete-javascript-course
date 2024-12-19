@@ -858,47 +858,140 @@ const openingHours = {
 
 // * 16. Challenge #3
 
-const gameEvents = new Map([
-    [17, `⚽ GOAL`],
-    [36, `🔁 Substitution`],
-    [47, `⚽ GOAL`],
-    [61, `🔁 Substitution`],
-    [64, `🟨 Yellow card`],
-    [69, `🔴 Red card`],
-    [70, `🔁 Substitution`],
-    [72, `🔁 Substitution`],
-    [76, `⚽ GOAL`],
-    [80, `⚽ GOAL`],
-    [92, `🟨 Yellow card`]
-]);
+// const gameEvents = new Map([
+//     [17, `⚽ GOAL`],
+//     [36, `🔁 Substitution`],
+//     [47, `⚽ GOAL`],
+//     [61, `🔁 Substitution`],
+//     [64, `🟨 Yellow card`],
+//     [69, `🔴 Red card`],
+//     [70, `🔁 Substitution`],
+//     [72, `🔁 Substitution`],
+//     [76, `⚽ GOAL`],
+//     [80, `⚽ GOAL`],
+//     [92, `🟨 Yellow card`]
+// ]);
 
-// * Task 1
+// // * Task 1
 
-// LOL 
-let events = [];
-for (const value of gameEvents.values()) events.push(value);
-events = [...new Set(events)];
+// // LOL 
+// let events = [];
+// for (const value of gameEvents.values()) events.push(value);
+// events = [...new Set(events)];
 
-// More convenient way
-events = [...new Set(gameEvents.values())];
-console.log(events);
+// // More convenient way
+// events = [...new Set(gameEvents.values())];
+// console.log(events);
 
-// * Task 2
+// // * Task 2
 
-gameEvents.delete(64);
-console.log(gameEvents);
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
-// * Task 3
+// // * Task 3
 
-const eventAverageFrequency = 90 / gameEvents.size;
-console.log(`An event happened, on average, every ${eventAverageFrequency} minutes.`);
+// const eventAverageFrequency = 90 / gameEvents.size;
+// console.log(`An event happened, on average, every ${eventAverageFrequency} minutes.`);
 
-// * Task 4
+// // * Task 4
 
-for (const [k, v] of gameEvents) {
-    let halfStr = ``;
-    if (k > 0 && k <= 45) halfStr = `[FIRST HALF]`;
-    else if (k > 45) halfStr = `[SECOND HALF]`;
+// for (const [k, v] of gameEvents) {
+//     let halfStr = ``;
+//     if (k > 0 && k <= 45) halfStr = `[FIRST HALF]`;
+//     else if (k > 45) halfStr = `[SECOND HALF]`;
 
-    console.log(`${halfStr} ${k}: ${v}`);
+//     console.log(`${halfStr} ${k}: ${v}`);
+// }
+
+
+// * 17. Working with Strings - Part 1
+
+// const airline = `TAP Air Portugal`;
+// const plane = `A320`;
+
+// console.log(plane[0]);
+// console.log(plane[1]);
+// console.log(plane[2]);
+// console.log(plane[3]);
+// console.log(`B737`[2]);
+
+// console.log(airline.indexOf(`r`));
+// console.log(airline.indexOf(`Portugal`));
+
+// console.log(airline.slice());
+// console.log(airline.slice(0, airline.indexOf(` `)));
+// console.log(airline.slice(airline.lastIndexOf(` `) + 1));
+
+// console.log(airline.slice(-2));
+// console.log(airline.slice(1, -2));
+
+// const checkMiddleSeat = function(seat) {
+//     // B and E are middle seats
+//     const s = seat.slice(-1);
+//     return s === `B` || s === `E` ? true : false;
+// };
+
+// console.log(checkMiddleSeat(`11B`));
+// console.log(checkMiddleSeat(`23C`));
+// console.log(checkMiddleSeat(`3E`));
+
+
+// * 18. Working with Strings - Part 2
+
+const airline = `TAP Air Portugal`;
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// Fix capitalization in name
+const passenger = `jOnAS`;
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1);
+
+console.log(passengerCorrect);
+
+// Check email
+
+const email = `hello@jonas.io`;
+const loginEmail = `  Hello@Jonas.Io \n`;
+
+const lowerEmail = loginEmail.toLowerCase();
+const trimmedEmail = lowerEmail.trim();
+console.log(trimmedEmail);
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// Replacing
+
+const priceGB = `288,97£`;
+const priceUS = priceGB.replace(`£`, `$`).replace(`,`, `.`);
+console.log(priceUS);
+
+const announcement = `All pessangers come to boarding door 23. Boarding door 23!`;
+console.log(announcement.replace(`door`, `gate`));
+
+// Booleans 
+const plane = `Airbus A320neo`;
+console.log(plane.includes(`A320`));
+console.log(plane.includes(`Boeing`));
+console.log(plane.startsWith(`Airb`));
+
+if (plane.startsWith(`Airbus`) && plane.endsWith(`neo`)) {
+    console.log(`Part of the new Airbus family`);
 }
+
+// Practice exercise 
+const checkBaggage = function(items) {
+    const baggage = items.toLowerCase();
+    if (baggage.includes(`knife`) || baggage.includes(`gun`)) {
+        console.log(`You are not allowed on board!`);
+    } else {
+        console.log(`Welcome aboard`);
+    }
+}
+
+checkBaggage(`I have a laptop, some of foof and a pocket knife`);
+checkBaggage(`Socks and camera`);
+checkBaggage(`Got some snacks and a gun for protection`);
