@@ -938,60 +938,116 @@ const openingHours = {
 
 // * 18. Working with Strings - Part 2
 
-const airline = `TAP Air Portugal`;
+// const airline = `TAP Air Portugal`;
 
-console.log(airline.toLowerCase());
-console.log(airline.toUpperCase());
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
 
-// Fix capitalization in name
-const passenger = `jOnAS`;
-const passengerLower = passenger.toLowerCase();
-const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1);
+// // Fix capitalization in name
+// const passenger = `jOnAS`;
+// const passengerLower = passenger.toLowerCase();
+// const passengerCorrect = passenger[0].toUpperCase() + passengerLower.slice(1);
 
-console.log(passengerCorrect);
+// console.log(passengerCorrect);
 
-// Check email
+// // Check email
 
-const email = `hello@jonas.io`;
-const loginEmail = `  Hello@Jonas.Io \n`;
+// const email = `hello@jonas.io`;
+// const loginEmail = `  Hello@Jonas.Io \n`;
 
-const lowerEmail = loginEmail.toLowerCase();
-const trimmedEmail = lowerEmail.trim();
-console.log(trimmedEmail);
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
 
-const normalizedEmail = loginEmail.toLowerCase().trim();
-console.log(normalizedEmail);
-console.log(email === normalizedEmail);
+// const normalizedEmail = loginEmail.toLowerCase().trim();
+// console.log(normalizedEmail);
+// console.log(email === normalizedEmail);
 
-// Replacing
+// // Replacing
 
-const priceGB = `288,97£`;
-const priceUS = priceGB.replace(`£`, `$`).replace(`,`, `.`);
-console.log(priceUS);
+// const priceGB = `288,97£`;
+// const priceUS = priceGB.replace(`£`, `$`).replace(`,`, `.`);
+// console.log(priceUS);
 
-const announcement = `All pessangers come to boarding door 23. Boarding door 23!`;
-console.log(announcement.replace(`door`, `gate`));
+// const announcement = `All pessangers come to boarding door 23. Boarding door 23!`;
+// console.log(announcement.replace(`door`, `gate`));
 
-// Booleans 
-const plane = `Airbus A320neo`;
-console.log(plane.includes(`A320`));
-console.log(plane.includes(`Boeing`));
-console.log(plane.startsWith(`Airb`));
+// // Booleans 
+// const plane = `Airbus A320neo`;
+// console.log(plane.includes(`A320`));
+// console.log(plane.includes(`Boeing`));
+// console.log(plane.startsWith(`Airb`));
 
-if (plane.startsWith(`Airbus`) && plane.endsWith(`neo`)) {
-    console.log(`Part of the new Airbus family`);
-}
+// if (plane.startsWith(`Airbus`) && plane.endsWith(`neo`)) {
+//     console.log(`Part of the new Airbus family`);
+// }
 
-// Practice exercise 
-const checkBaggage = function(items) {
-    const baggage = items.toLowerCase();
-    if (baggage.includes(`knife`) || baggage.includes(`gun`)) {
-        console.log(`You are not allowed on board!`);
-    } else {
-        console.log(`Welcome aboard`);
+// // Practice exercise 
+// const checkBaggage = function(items) {
+//     const baggage = items.toLowerCase();
+//     if (baggage.includes(`knife`) || baggage.includes(`gun`)) {
+//         console.log(`You are not allowed on board!`);
+//     } else {
+//         console.log(`Welcome aboard`);
+//     }
+// }
+
+// checkBaggage(`I have a laptop, some of foof and a pocket knife`);
+// checkBaggage(`Socks and camera`);
+// checkBaggage(`Got some snacks and a gun for protection`);
+
+
+// * 19. Working with Strings - Part 3
+
+// Split and join
+console.log(`a+very+nice+string`.split(`+`));
+console.log(`Jonas Schmedtmann`.split(` `));
+
+const [firstName, lastName] = `Jonas Schmedtmann`.split(` `);
+console.log(firstName, lastName);
+
+const newName = [`Mr.`, firstName, lastName.toUpperCase()].join(` `);
+console.log(newName);
+
+const capitalizeName = function(name) {
+    const names = name.split(` `);
+    const namesUpper = new Array();
+
+    for (const n of names) {
+        namesUpper.push(n[0].toUpperCase() + n.slice(1));
+
+        // Quite an interesting one
+        // namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
     }
+
+    return namesUpper.join(` `);
+};
+
+console.log(capitalizeName(`jessica ann smith davis`));
+console.log(capitalizeName(`erwin hemnitz`));
+
+// Padding
+const message = `Go to gate 23!`;
+console.log(message.padStart(25, `+`).padEnd(30, `+`));
+console.log(`Jonas`.padStart(25, `+`));
+
+const maskCreditCard = function(number) {
+    const str = number + ``;
+    const last = str.slice(-4);
+    return last.padStart(str.length, `*`);
 }
 
-checkBaggage(`I have a laptop, some of foof and a pocket knife`);
-checkBaggage(`Socks and camera`);
-checkBaggage(`Got some snacks and a gun for protection`);
+console.log(maskCreditCard(4111111453754111));
+console.log(maskCreditCard(`4111111453754111`));
+
+// Repeat
+const message2 = `Bad weather... All Departures Delayed...`;
+console.log(message2.repeat(5));
+
+const planesInLine = function(n) {
+    console.log(`There are ${n} planes in line ${`✈️`.repeat(n)}`);
+}
+
+planesInLine(5);
+planesInLine(3);
+planesInLine(12);

@@ -260,7 +260,7 @@ const books = [
     {
         title: `Game of Thrones`,
         author: `George R.R. Martin`,
-        ISBN: 6322983997,
+        ISBN: `6322983997`,
         keywords: [`beep`, `beep`, `boop`],
         publisher: `Bantam books`,
         onlineContent: true,
@@ -280,7 +280,7 @@ const books = [
     {
         title: `Clash of Kings`,
         author: [`George R.R. Martin`, `Some other dude`],
-        ISBN: 6504187002,
+        ISBN: `6504187002`,
         onlineContent: false,
         pages: 900,
         edition: undefined,
@@ -295,7 +295,7 @@ const books = [
         onlineContent: false,
         pages: 1200,
         edition: undefined,
-        ISBN: 1439013314,
+        ISBN: `1439013314`,
         highlighted: true,
         keywords: [`beep`, `bop`, `beep`, `bop`],
         programmingLanguage: `Kotlin`
@@ -305,7 +305,7 @@ const books = [
         author: `George R.R. Martin`,
         edition: undefined,
         pages: 750,
-        ISBN: 5586956527,
+        ISBN: `5586956527`,
         highlighted: true, 
         keywords: [`bop`, `bop`, `beep`]
     },
@@ -314,7 +314,7 @@ const books = [
         author: `George R.R. Martin`,
         edition: undefined,
         pages: 900,
-        ISBN: 9373546023,
+        ISBN: `9373546023`,
         highlighted: true,
         language: `English`,
         keywords: [`bop`, `bop`, `beep`]
@@ -558,28 +558,116 @@ const books = [
 
 // * 15. Working with Strings - Part 1
 
+// This is just a warmup
+// const jonas = {
+//     firstName: `Jonas`,
+//     lastName: `Schmadtmann`,
+//     friends: [`Steven`, `Fred`, `Timur`],
+//     isMarried: false,
+//     birthYear: 1991,
+
+//     calcAge() {
+//         this.age = 2037 - 1991;
+//         return this.age;
+//     },
+
+//     marry() {
+//         this.isMarried = true;
+//         return this.isMarried;
+//     },
+
+//     unmarry: function() {
+//         this.isMarried = false;
+//         return this.isMarried;    
+//     }
+// };
+
+// console.table(jonas);
+// console.log(jonas[`age`]);
+// console.log(jonas.calcAge());
+// console.log(jonas[`age`]);
+// console.log(jonas.marry());
+// console.log(jonas.unmarry());
+
+// let jonasMap = new Map([
+//     [`firstName`, `Steven`],
+//     [`lastName`, `Huawking`]
+// ]);
+
+// for (const entry of jonasMap.values()) {
+//     console.log(entry);
+// }
+
+// jonasMap = new Map(Object.entries(jonas));
+// console.log(`-----------------------------`);
+// for (const [k, v] of jonasMap) {
+//     console.log(k, v);
+// } 
+
+// const testSet = new Set([
+//     `tic`,
+//     `tac`,
+//     `tac`,
+//     `tic`,
+//     `tac`,
+//     `toe`,
+//     `tic`,
+//     `toe`,
+//     `toe`
+// ]);
+
+// const combineMe1 = new Set([`tomatoes`, `tomatoes`, `cucumbers`, `potatoes`]);
+// const combineMe2 = new Set([true, true, false, false, 1, 0]);
+
+// console.log(`----------COMBINEME1------------`);
+// for (const item of combineMe1) {
+//     console.log(item);
+// }
+
+// const combinedSet = new Set([
+//     ...testSet,
+//     ...combineMe1,
+//     ...combineMe2
+// ]);
+
+// console.log(`----------COMBINEDSET-----------`);
+// for (const item of combinedSet) {
+//     console.log(item);
+// }
+
+// console.log(testSet.union(combineMe1).union(combineMe2));
+
 // // * 15.1
 
-// const ISBN = `6322983997`;
-// console.log(ISBN[6], ISBN[4], ISBN[9], ISBN[8]);
+// console.log(books[0].ISBN[6]);
+// console.log(books[0].ISBN[4]);
+// console.log(books[0].ISBN[9]);
+// console.log(books[0].ISBN[8]);
 
 // // * 15.2
 
-// const quote = 'A computer once beat me at chess, but it was no match for me at kick boxing';
+// const quote = `A computer once beat me at chess, but it was no match for me at kick boxing`;
 
 // console.log(quote.indexOf(`chess`));
 
 // // * 15.3
 
-// console.log(quote.slice(quote.lastIndexOf(`boxing`)));
+// // My way
+// console.log(quote.slice(quote.indexOf(`boxing`)));
 
-// for (const char of quote.slice(quote.lastIndexOf(`boxing`))) console.log(char);
+// // Smarter way
+// console.log(quote.slice(quote.lastIndexOf(` `) + 1));
 
 // // * 15.4
 
 // const isContributor = function(author) {
-//     return author.indexOf(`(Contributor)`) != -1 ? true : false;
-// };
+//     // I did it in two way
+//     // 1. Less strict way
+//     const contributor1 = author.includes(`(Contributor)`);
+//     // 2. More strict way
+//     const contributor2 = author.endsWith(`(Contributor)`);
+//     return contributor1 && contributor2;
+// }
 
 // console.log(isContributor(`Julie Sussman (Contributor)`));
 // console.log(isContributor(`Robert Sedgewick`));
@@ -587,43 +675,93 @@ const books = [
 
 // * 16. Working with Strings - Part 2
 
-// * 16.1
+// // * 16.1
 
-const normalizeAuthorName = function(author) {
-    const normalizedAuthor = author
-        .toLowerCase()
-        .trim()
-        .replace(`(contributor)`, ``);
-    const firstName = normalizedAuthor.slice(0, normalizedAuthor.indexOf(` `));
-    const lastName = normalizedAuthor.slice(normalizedAuthor.indexOf(` `) + 1);
-    return firstName[0].toUpperCase() + 
-            firstName.slice(1) + 
-            ` ` + 
-            lastName[0].toUpperCase() +
-            lastName.slice(1);
+// const normalizeAuthorName = function(author) {
+//     const trimmedAuthor = author.trim();
+//     const cleanedAuthor = trimmedAuthor.slice(0, trimmedAuthor.indexOf(`(Contributor)`));
+
+//     const firstName = cleanedAuthor.slice(0, cleanedAuthor.indexOf(` `)).toLowerCase();
+//     const lastName = cleanedAuthor.slice(cleanedAuthor.indexOf(` `) + 1).toLowerCase();
+//     return firstName[0].toUpperCase() + firstName.slice(1) + ` ` + lastName[0].toUpperCase() + lastName.slice(1);
+// }
+
+// String.prototype.slice
+
+// console.log(normalizeAuthorName(`  JuliE sussMan (Contributor)`));
+
+// // * 16.2
+
+// const newBookTitle = books[1].title.replace(`Kings`, `Queens`);
+// console.log(newBookTitle);
+
+// // * 16.3
+
+// const logBookTheme = function(title) {
+//     title = title.toLowerCase();
+
+//     if (title.startsWith(`computer`)) {
+//         console.log(`This book is about computers`);
+//     } else if (title.includes(`algorithms`) && title.includes(`structures`)) {
+//         console.log(`This book is about algorithms and data structures`);
+//     } else if ((title.endsWith(`system`) || title.endsWith(`systems`)) && !title.includes(`operating`)) {
+//         console.log(`This book is about some systems, but definitely not about operating systems`);
+//     }
+// }
+
+// logBookTheme(`computer science ahh type book`);
+// logBookTheme(`ludicrous algorithms and structures book`);
+// logBookTheme(`some other book about systems`);
+
+
+// * 17. Working with Strings - Part 3
+
+// * 17.1
+
+const bookCategories = 'science;computing;computer science;algorithms;business;operating systems;networking;electronics';
+
+const logBookCategories = function(categories) {
+    for (const category of categories.split(`;`)) {
+        console.log(category);
+    }
 };
 
-console.log(normalizeAuthorName(`    JulIE sussMAn (ContributOR)`));
+logBookCategories(bookCategories);
 
-// * 16.2
+// * 17.2
 
-const title = books[1].title;
-console.log(title);
-const newBookTitle = title.replace(`Kings`, `Queens`);
-console.log(newBookTitle);
-
-// * 16.3
-
-const logBookTheme = function(title) {
-    title = title.toLowerCase();
-
-    if (title.startsWith(`computer`)) {
-        console.log(`This book is about computers`);
-    } else if (title.includes(`algorithms`) || title.includes(`structures`)) {
-        console.log(`This book is about algorithms and data structures`);
-    } else if ((title.endsWith(`system`) || title.endsWith(`systems`)) && !title.includes(`operating`)) {
-        console.log(`This book is about some systems, but definitely not about operating systems`);
+const getKeywordsAsString = function(books) {
+    // 1. Collect all book objects keywords
+    let allKeywords = [];
+    for (const book of books) {
+        allKeywords.push(...book.keywords);
     }
-}
 
-logBookTheme(title)
+    // 2. Make keywords unique
+    allKeywords = [...new Set(allKeywords)];
+
+    // 3. Join them and separate with semicolon
+    const keywordsStr = allKeywords.join(`;`);
+
+    console.log(keywordsStr);
+};
+
+getKeywordsAsString(books);
+
+// * 17.3
+
+const bookChapters = [
+    ['The Basics', 14], 
+    ['Sorting', 254], 
+    ['Searching', 372], 
+    ['Graphs', 526], 
+    ['Strings', 706]
+];
+
+const logBookChapters = function(chapters) {
+    for (const [chapter, pages] of chapters) {
+        console.log(chapter.padEnd(20, `_`) + ` ` + pages);
+    }
+};
+
+logBookChapters(bookChapters);
